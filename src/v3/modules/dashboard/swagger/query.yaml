@@ -1,0 +1,175 @@
+paths:
+  /dashboard/:
+    get:
+      tags:
+        - Dashboard
+      summary: "Retrieve dashboard data"
+      produces:
+        - application/json
+      parameters:
+        - in: query
+          name: id
+          schema:
+            type: String
+          required: false
+        - in: query
+          name: name
+          schema:
+            type: String
+          required: false   
+      responses:
+        200:
+          description: success
+          schema:
+            type: "object"
+            properties:
+              code:
+                type: "integer"
+                default: 200
+              data:
+                type: "array"
+                items:
+                  type: "object"
+                  $ref: "#/definitions/dashboard"
+              success:
+                type: "boolean"
+                default: true
+        404:
+          description: Not Found
+        500:
+          description: Internal Server Error
+  /dashboard/add-single-recode:
+    post:
+      tags:
+        - Dashboard
+      summary: "add single dashboard data"
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: inputs for dashboard data
+          required: true
+          schema:
+            type: object
+            properties:
+              name:
+                type: string
+              icon:
+                type: string
+              active:
+                type: boolean              
+            example:
+              name: 'Test Dashboard' 
+              icon: 'Test icon' 
+              active: true         
+      responses:
+        200:
+          description: success
+          schema:
+            type: "object"
+            properties:
+              code:
+                type: "integer"
+                default: 200
+              data:
+                type: "object"
+                $ref: "#/definitions/dashboard"
+              success:
+                type: "boolean"
+                default: true
+        404:
+          description: Not Found
+        500:
+          description: Internal Server Error
+  /dashboard/add-multiple-recodes:
+    post:
+      tags:
+        - Dashboard
+      summary: "add multiple dashboard data"
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: inputs for dashboard data
+          required: true
+          schema:
+            type: object
+            properties:
+              dashboardList:
+                type: array
+                items:
+                  type: "object"
+                  properties:
+                    name:
+                      type: string
+                    icon:
+                      type: string
+                    active:
+                      type: boolean  
+                  example:
+                    name: 'Test Dashboard' 
+                    icon: 'Test icon' 
+                    active: true                                 
+      responses:
+        200:
+          description: success
+          schema:
+            type: "object"
+            properties:
+              code:
+                type: "integer"
+                default: 200
+              data:
+                type: "array"
+                items:
+                  type: "object"
+                  $ref: "#/definitions/dashboard"
+              success:
+                type: "boolean"
+                default: true
+        404:
+          description: Not Found
+        500:
+          description: Internal Server Error
+  /dashboard/update-recode:
+    put:
+      tags:
+        - Dashboard
+      summary: update dashboard"
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: update for dashboard data
+          required: true
+          schema:
+            type: object
+            properties:
+              query:
+                type: "object"
+              updates:
+                type: "object"
+              frontEndPortalId:
+                type: string                                    
+      responses:
+        200:
+          description: success
+          schema:
+            type: "object"
+            properties:
+              code:
+                type: "integer"
+                default: 200
+              data:
+                type: "object"
+                $ref: "#/definitions/dashboard"
+              success:
+                type: "boolean"
+                default: true
+        404:
+          description: Not Found
+        500:
+          description: Internal Server Error

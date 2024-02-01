@@ -1,0 +1,207 @@
+paths:
+  /search-field/:
+    get:
+      tags:
+        - Search field
+      summary: "Retrieve Search field data"
+      produces:
+        - application/json
+      parameters:
+        - in: query
+          name: id
+          schema:
+            type: String
+          required: false
+        - in: query
+          name: name
+          schema:
+            type: String
+          required: false
+        - in: query
+          name: frontEndPortalId
+          schema:
+            type: String
+          required: false 
+        - in: query
+          name: frontEndPortalName
+          schema:
+            type: String
+          required: false 
+        - in: query
+          name: clusterId
+          schema:
+            type: String
+          required: false 
+        - in: query
+          name: clusterName
+          schema:
+            type: String
+          required: false 
+        - in: query
+          name: backendServiceId
+          schema:
+            type: String
+          required: false
+        - in: query
+          name: backendServiceName
+          schema:
+            type: String
+          required: false 
+        - in: query
+          name: serviceModuleId
+          schema:
+            type: String
+          required: false 
+        - in: query
+          name: serviceModuleName
+          schema:
+            type: String
+          required: false     
+      responses:
+        200:
+          description: success
+          schema:
+            type: "object"
+            properties:
+              code:
+                type: "integer"
+                default: 200
+              data:
+                type: "array"
+                items:
+                  type: "object"
+                  $ref: "#/definitions/SearchField"
+              success:
+                type: "boolean"
+                default: true
+        404:
+          description: Not Found
+        500:
+          description: Internal Server Error
+  /search-field/add-single-recode:
+    post:
+      tags:
+        - Search field
+      summary: "add single Search field data"
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: inputs for Search field data
+          required: true
+          schema:
+            type: object
+            properties:
+              name:
+                type: string
+              serviceModuleId:
+                type: string               
+            example:
+              name: 'amount'
+              serviceModuleId: 'serviceModuleId'         
+      responses:
+        200:
+          description: success
+          schema:
+            type: "object"
+            properties:
+              code:
+                type: "integer"
+                default: 200
+              data:
+                type: "object"
+                $ref: "#/definitions/SearchField"
+              success:
+                type: "boolean"
+                default: true
+        404:
+          description: Not Found
+        500:
+          description: Internal Server Error
+  /search-field/add-multiple-recodes:
+    post:
+      tags:
+        - Search field
+      summary: "add multiple Search field data"
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: inputs for Search field data
+          required: true
+          schema:
+            type: object
+            properties:
+              searchFieldList:
+                type: array
+                items:
+                  type: "object"
+                  properties:
+                    name:
+                      type: string
+                    serviceModuleId:
+                      type: string
+                  example:
+                    name: 'amount'
+                    serviceModuleId: ''                                 
+      responses:
+        200:
+          description: success
+          schema:
+            type: "object"
+            properties:
+              code:
+                type: "integer"
+                default: 200
+              data:
+                type: "array"
+                items:
+                  type: "object"
+                  $ref: "#/definitions/SearchField"
+              success:
+                type: "boolean"
+                default: true
+        404:
+          description: Not Found
+        500:
+          description: Internal Server Error
+  /search-field/update-recode:
+    put:
+      tags:
+        - Search field
+      summary: update Search field"
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: update for Search field data
+          required: true
+          schema:
+            type: object
+            properties:
+              query:
+                type: "object"
+              updates:
+                type: "object"                                    
+      responses:
+        200:
+          description: success
+          schema:
+            type: "object"
+            properties:
+              code:
+                type: "integer"
+                default: 200
+              data:
+                type: "object"
+                $ref: "#/definitions/SearchField"
+              success:
+                type: "boolean"
+                default: true
+        404:
+          description: Not Found
+        500:
+          description: Internal Server Error

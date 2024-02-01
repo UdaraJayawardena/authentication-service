@@ -1,0 +1,12 @@
+definitions:
+  functionality-wireframe:
+    type: object
+    properties:
+      id:
+        type: "string"
+      functionalityId:
+        type: "string"
+      wireframeId:
+        type: "string"
+      active:
+        type: "boolean"

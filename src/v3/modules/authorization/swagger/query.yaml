@@ -1,0 +1,120 @@
+paths:
+  /authorization/camunda-users:
+    get:
+      tags:
+        - Authorization
+      summary: "Retrieve camunda users"
+      produces:
+        - application/json   
+      responses:
+        200:
+          description: success
+          schema:
+            type: "object"
+            properties:
+              code:
+                type: "integer"
+                default: 200
+              data:
+                type: "object"
+              success:
+                type: "boolean"
+                default: true
+        404:
+          description: Not Found
+        500:
+          description: Internal Server Error
+  /authorization/login:
+    post:
+      tags:
+        - Authorization
+      summary: "add Login data"
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: inputs for login data
+          required: true
+          schema:
+            type: object
+            properties:
+              userId:
+                type: string
+              password:
+                type: string             
+            example:
+              userId: 'demo'
+              password: '6=nGjbEY'        
+      responses:
+        200:
+          description: success
+          schema:
+            type: "object"
+            properties:
+              code:
+                type: "integer"
+                default: 200
+              data:
+                type: "object"
+              success:
+                type: "boolean"
+                default: true
+        404:
+          description: Not Found
+        500:
+          description: Internal Server Error
+  /authorization/is-authorized:
+    post:
+      tags:
+        - Authorization
+      summary: "Authorize token"
+      produces:
+        - application/json                           
+      responses:
+        200:
+          description: success
+          schema:
+            type: "object"
+            properties:
+              code:
+                type: "integer"
+                default: 200
+              data:
+                type: "object"
+              success:
+                type: "boolean"
+                default: true
+        404:
+          description: Not Found
+        500:
+          description: Internal Server Error
+  # /permisson-matrix/set-permissions-to-cache:
+  #   post:
+  #     tags:
+  #       - Permisson Matrix
+  #     summary: "set permissions to cache"
+  #     produces:
+  #       - application/json
+  #     parameters:
+  #       - in: body
+  #         name: body
+  #         description: set permissions to cache          
+  #     responses:
+  #       200:
+  #         description: success
+  #         schema:
+  #           type: "object"
+  #           properties:
+  #             code:
+  #               type: "integer"
+  #               default: 200
+  #             data:
+  #               type: "object"
+  #             success:
+  #               type: "boolean"
+  #               default: true
+  #       404:
+  #         description: Not Found
+  #       500:
+  #         description: Internal Server Error

@@ -1,0 +1,202 @@
+paths:
+  /front-end-portal/:
+    get:
+      tags:
+        - front-end portal
+      summary: "Retrieve front-end portal data"
+      produces:
+        - application/json
+      parameters:
+        - in: query
+          name: id
+          schema:
+            type: String
+          required: false
+        - in: query
+          name: name
+          schema:
+            type: String
+          required: false
+        - in: query
+          name: key
+          schema:
+            type: String
+          required: false   
+      responses:
+        200:
+          description: success
+          schema:
+            type: "object"
+            properties:
+              code:
+                type: "integer"
+                default: 200
+              data:
+                type: "array"
+                items:
+                  type: "object"
+                  $ref: "#/definitions/frontEndPortal"
+              success:
+                type: "boolean"
+                default: true
+        404:
+          description: Not Found
+        500:
+          description: Internal Server Error
+  /front-end-portal/add-single-recode:
+    post:
+      tags:
+        - front-end portal
+      summary: "add single front-end portal data"
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: inputs for front-end portal data
+          required: true
+          schema:
+            type: object
+            properties:
+              name:
+                type: string
+              key:
+                type: string              
+            example:
+              name: 'Bridgefund portal' 
+              key: 'BFP'        
+      responses:
+        200:
+          description: success
+          schema:
+            type: "object"
+            properties:
+              code:
+                type: "integer"
+                default: 200
+              data:
+                type: "object"
+                $ref: "#/definitions/frontEndPortal"
+              success:
+                type: "boolean"
+                default: true
+        404:
+          description: Not Found
+        500:
+          description: Internal Server Error
+  /front-end-portal/add-multiple-recodes:
+    post:
+      tags:
+        - front-end portal
+      summary: "add multiple front-end portal data"
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: inputs for front-end portal data
+          required: true
+          schema:
+            type: object
+            properties:
+              frontEndPortalList:
+                type: array
+                items:
+                  type: "object"
+                  properties:
+                    name:
+                      type: string
+                    key:
+                      type: string 
+                  example:
+                    name: 'Bridgefund portal' 
+                    key: 'BFP'                                  
+      responses:
+        200:
+          description: success
+          schema:
+            type: "object"
+            properties:
+              code:
+                type: "integer"
+                default: 200
+              data:
+                type: "array"
+                items:
+                  type: "object"
+                  $ref: "#/definitions/frontEndPortal"
+              success:
+                type: "boolean"
+                default: true
+        404:
+          description: Not Found
+        500:
+          description: Internal Server Error
+  /front-end-portal/update-recode:
+    put:
+      tags:
+        - front-end portal
+      summary: update front-end portal"
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: update for front-end portal data
+          required: true
+          schema:
+            type: object
+            properties:
+              query:
+                type: "object"
+              updates:
+                type: "object"                                    
+      responses:
+        200:
+          description: success
+          schema:
+            type: "object"
+            properties:
+              code:
+                type: "integer"
+                default: 200
+              data:
+                type: "object"
+                $ref: "#/definitions/frontEndPortal"
+              success:
+                type: "boolean"
+                default: true
+        404:
+          description: Not Found
+        500:
+          description: Internal Server Error
+  /front-end-portal/seed:
+    post:
+      tags:
+        - front-end portal
+      summary: Seed portals (only run if portal not available)
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: update for front-end portal data
+          required: false                                   
+      responses:
+        200:
+          description: success
+          schema:
+            type: "object"
+            properties:
+              code:
+                type: "integer"
+                default: 200
+              data:
+                type: "object"
+              success:
+                type: "boolean"
+                default: true
+        404:
+          description: Not Found
+        500:
+          description: Internal Server Error

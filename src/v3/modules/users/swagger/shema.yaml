@@ -1,0 +1,56 @@
+definitions:
+  user:
+    type: object
+    properties:
+      user: 
+        type: object
+        properties:   
+          displayName:
+            type: "string"
+          email:
+            type: "string" 
+          firstName:
+            type: "string"  
+          jumpcloudUser:
+            type: "string"
+          lastName:
+            type: "string"
+          name:
+            type: "string"  
+          phone:
+            type: "string"
+          preferredLanguage:
+            type: "string"  
+          profileImage:
+            type: "string"
+          roleId:
+            type: "string"
+          roleName:
+            type: "string"
+          userId:
+            type: "string"
+          userName:
+            type: "string"
+      LoggedUser:
+        type: object
+        properties:
+          userName:
+            type: "string"
+          email:
+            type: "string"
+          userId:
+            type: "string"
+          firstName:
+            type: "string" 
+          lastName:
+            type: "string"
+          userType:
+            type: "string"
+          permisssions:
+            type: "object" 
+          role:
+            type: "string"
+          profileImage:
+            type: "string"              
+
+                    

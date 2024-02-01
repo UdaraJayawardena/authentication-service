@@ -1,0 +1,53 @@
+# Main Config
+PORT = 4012
+HOST = localhost
+NODE_ENV = development
+
+VERSION = v1.0.0
+
+# Application Config
+APP_NAME = Authentication Server
+APP_KEY = A
+APP_URL = localhost:4012
+APP_ENV = localhost
+
+CLIENT_APP_URL = http://localhost:3000
+
+API_VERSIONS = V1 V2 V3
+
+# Database Connection ENV
+DB_NAME_V1 = authorization_v1
+DB_NAME_V2 = authorization
+DB_NAME_V3 = authorization_v3
+DB_NAME_V1 = funder_notifications
+# <DB_NAME> Replace by code base
+DB_URI = mongodb://localhost:27017/<DB_NAME>
+
+MYSQL_DB_HOST = localhost
+MYSQL_DB_PORT = 27017
+MYSQL_DB_USER = 
+MYSQL_DB_PASSWORD =
+MYSQL_DB_NAME_V1 = authorization_v1
+MYSQL_DB_NAME_V2 = authorization
+MYSQL_DB_NAME_V3 = authorization_v3
+
+TEST_MYSQL_DB_HOST = localhost
+TEST_MYSQL_DB_PORT = 27017
+TEST_MYSQL_DB_USER = 
+TEST_MYSQL_DB_PASSWORD =
+TEST_MYSQL_DB_NAME_V1 = test_authorization_v1
+TEST_MYSQL_DB_NAME_V2 = test_authorization
+TEST_MYSQL_DB_NAME_V3 = test_authorization_v3
+
+INTEGRATION = false
+
+ENV_FILE_PATH = ./env
+
+NODE_TLS_REJECT_UNAUTHORIZED = 0
+REDIS_PORT = 6379
+
+SENTRY_DSN = 
+SENTRY_ENVIRONMENT = 
+SENTRY_SAMPLERATE = 
+
+# dev, prod, staging, uat

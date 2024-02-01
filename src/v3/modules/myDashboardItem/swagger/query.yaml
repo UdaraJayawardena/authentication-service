@@ -1,0 +1,236 @@
+paths:
+  /my-dashboard-item/:
+    get:
+      tags:
+        - My Dashboard Item
+      summary: "Retrieve my dashboard item data for logged in user"
+      produces:
+        - application/json
+      parameters:
+        - in: query
+          name: id
+          schema:
+            type: String
+          required: false
+        - in: query
+          name: myDashboardId
+          schema:
+            type: String
+          required: false
+        - in: query
+          name: dashboardItemId
+          schema:
+            type: String
+        - in: query
+          name: 'myDashboardName'
+          schema:
+            type: String
+          required: false    
+      responses:
+        200:
+          description: success
+          schema:
+            type: "object"
+            properties:
+              code:
+                type: "integer"
+                default: 200
+              data:
+                type: "array"
+                items:
+                  type: "object"
+                  $ref: "#/definitions/myDashboardItem"
+              success:
+                type: "boolean"
+                default: true
+        404:
+          description: Not Found
+        500:
+          description: Internal Server Error
+  /my-dashboard-item/get-by-query:
+    get:
+      tags:
+        - My Dashboard Item
+      summary: "Retrieve my dashboard item data"
+      produces:
+        - application/json
+      parameters:
+        - in: query
+          name: id
+          schema:
+            type: String
+          required: false
+        - in: query
+          name: myDashboardId
+          schema:
+            type: String
+          required: false
+        - in: query
+          name: dashboardItemId
+          schema:
+            type: String
+        - in: query
+          name: 'myDashboardName'
+          schema:
+            type: String
+          required: false    
+      responses:
+        200:
+          description: success
+          schema:
+            type: "object"
+            properties:
+              code:
+                type: "integer"
+                default: 200
+              data:
+                type: "array"
+                items:
+                  type: "object"
+                  $ref: "#/definitions/myDashboardItem"
+              success:
+                type: "boolean"
+                default: true
+        404:
+          description: Not Found
+        500:
+          description: Internal Server Error
+  /my-dashboard-item/add-single-recode:
+    post:
+      tags:
+        - My Dashboard Item
+      summary: "add single my dashboard item data"
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: inputs for my dashboard item data
+          required: true
+          schema:
+            type: object
+            properties:
+              myDashboardId:
+                type: string
+              dashboardItemId:
+                type: string
+              sequenceNumber:
+                type: string
+              active:
+                type: boolean              
+            example:
+              myDashboardId: 'Test my dashboardId'
+              dashboardItemId: 'Test dashboardItemId'
+              sequenceNumber: 'Test sequenceNumber' 
+              active: true         
+      responses:
+        200:
+          description: success
+          schema:
+            type: "object"
+            properties:
+              code:
+                type: "integer"
+                default: 200
+              data:
+                type: "object"
+                $ref: "#/definitions/myDashboardItem"
+              success:
+                type: "boolean"
+                default: true
+        404:
+          description: Not Found
+        500:
+          description: Internal Server Error
+  /my-dashboard-item/add-multiple-recodes:
+    post:
+      tags:
+        - My Dashboard Item
+      summary: "add multiple my dashboard item data"
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: inputs for my dashboard item data
+          required: true
+          schema:
+            type: object
+            properties:
+              myDashboardItemList:
+                type: array
+                items:
+                  type: "object"
+                  properties:
+                    myDashboardId:
+                      type: string
+                    dashboardItemId:
+                      type: string
+                    sequenceNumber:
+                      type: string
+                    active:
+                      type: boolean              
+                  example:
+                    myDashboardId: 'Test my dashboardId'
+                    dashboardItemId: 'Test dashboardItemId'
+                    sequenceNumber: 'Test sequenceNumber' 
+                    active: true                               
+      responses:
+        200:
+          description: success
+          schema:
+            type: "object"
+            properties:
+              code:
+                type: "integer"
+                default: 200
+              data:
+                type: "array"
+                items:
+                  type: "object"
+                  $ref: "#/definitions/myDashboardItem"
+              success:
+                type: "boolean"
+                default: true
+        404:
+          description: Not Found
+        500:
+          description: Internal Server Error
+  /my-dashboard-item/update-recode:
+    put:
+      tags:
+        - My Dashboard Item
+      summary: update dashboard item"
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: update fo my dashboard item data
+          required: true
+          schema:
+            type: object
+            properties:
+              query:
+                type: "object"
+              updates:
+                type: "object"                                    
+      responses:
+        200:
+          description: success
+          schema:
+            type: "object"
+            properties:
+              code:
+                type: "integer"
+                default: 200
+              data:
+                type: "object"
+                $ref: "#/definitions/myDashboardItem"
+              success:
+                type: "boolean"
+                default: true
+        404:
+          description: Not Found
+        500:
+          description: Internal Server Error

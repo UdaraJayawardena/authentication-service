@@ -1,0 +1,269 @@
+paths:
+  /wireframe-and-search-field/:
+    get:
+      tags:
+        - Wireframe and search field
+      summary: "Retrieve Wireframe and search field data"
+      produces:
+        - application/json
+      parameters:
+        - in: query
+          name: id
+          schema:
+            type: String
+          required: false
+        - in: query
+          name: wireframeId
+          schema:
+            type: String
+          required: false
+        - in: query
+          name: wireframeName
+          schema:
+            type: String
+          required: false
+        - in: query
+          name: active
+          schema:
+            type: boolean
+          required: false    
+      responses:
+        200:
+          description: success
+          schema:
+            type: "object"
+            properties:
+              code:
+                type: "integer"
+                default: 200
+              data:
+                type: "array"
+                items:
+                  type: "object"
+                  $ref: "#/definitions/wireframeAndSearchField"
+              success:
+                type: "boolean"
+                default: true
+        404:
+          description: Not Found
+        500:
+          description: Internal Server Error
+  /wireframe-and-search-field/query-with-search-recodes-display-fields:
+    get:
+      tags:
+        - Wireframe and search field
+      summary: "Retrieve Wireframe and search field with search results display fields  data"
+      produces:
+        - application/json
+      parameters:
+        - in: query
+          name: id
+          schema:
+            type: String
+          required: false
+        - in: query
+          name: wireframeId
+          schema:
+            type: String
+          required: false
+        - in: query
+          name: wireframeName
+          schema:
+            type: String
+          required: false  
+      responses:
+        200:
+          description: success
+          schema:
+            type: "object"
+            properties:
+              code:
+                type: "integer"
+                default: 200
+              data:
+                type: "array"
+                items:
+                  type: "object"
+                  $ref: "#/definitions/wireframeAndSearchField"
+              success:
+                type: "boolean"
+                default: true
+        404:
+          description: Not Found
+        500:
+          description: Internal Server Error
+    post:
+      tags:
+        - Wireframe and search field
+      summary: "Retrieve Wireframe and search field with search results display fields  data"
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: inputs for Wireframe and search field data
+          required: true
+          schema:
+            type: object
+            properties:
+              wireframeId:
+                type: array 
+              wireframeName:
+                type: string           
+            example:
+              wireframeId: ['']        
+              wireframeName: ''  
+      responses:
+        200:
+          description: success
+          schema:
+            type: "object"
+            properties:
+              code:
+                type: "integer"
+                default: 200
+              data:
+                type: "array"
+                items:
+                  type: "object"
+                  $ref: "#/definitions/wireframeAndSearchField"
+              success:
+                type: "boolean"
+                default: true
+        404:
+          description: Not Found
+        500:
+          description: Internal Server Error
+  /wireframe-and-search-field/add-single-recode:
+    post:
+      tags:
+        - Wireframe and search field
+      summary: "add single Wireframe and search field data"
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: inputs for Wireframe and search field data
+          required: true
+          schema:
+            type: object
+            properties:
+              displayName:
+                type: string
+              wireframeId:
+                type: string 
+              searchFieldId:
+                type: string           
+            example:
+              displayName: '' 
+              wireframeId: ''        
+              searchFieldId: '' 
+      responses:
+        200:
+          description: success
+          schema:
+            type: "object"
+            properties:
+              code:
+                type: "integer"
+                default: 200
+              data:
+                type: "object"
+                $ref: "#/definitions/wireframeAndSearchField"
+              success:
+                type: "boolean"
+                default: true
+        404:
+          description: Not Found
+        500:
+          description: Internal Server Error
+  /wireframe-and-search-field/add-multiple-recodes:
+    post:
+      tags:
+        - Wireframe and search field
+      summary: "add multiple Wireframe and search field data"
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: inputs for Wireframe and search field data
+          required: true
+          schema:
+            type: object
+            properties:
+              wireframeAndSearchFieldList:
+                type: array
+                items:
+                  type: "object"
+                  properties:
+                    displayName:
+                      type: string
+                    wireframeId:
+                      type: string 
+                    searchFieldId:
+                      type: string
+                  example:
+                    displayName: ''  
+                    wireframeId: ''
+                    searchFieldId: ''
+      responses:
+        200:
+          description: success
+          schema:
+            type: "object"
+            properties:
+              code:
+                type: "integer"
+                default: 200
+              data:
+                type: "array"
+                items:
+                  type: "object"
+                  $ref: "#/definitions/wireframeAndSearchField"
+              success:
+                type: "boolean"
+                default: true
+        404:
+          description: Not Found
+        500:
+          description: Internal Server Error
+  /wireframe-and-search-field/update-recode:
+    put:
+      tags:
+        - Wireframe and search field
+      summary: update Wireframe and search field"
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: update for Wireframe and search field data
+          required: true
+          schema:
+            type: object
+            properties:
+              query:
+                type: "object"
+              updates:
+                type: "object"                                    
+      responses:
+        200:
+          description: success
+          schema:
+            type: "object"
+            properties:
+              code:
+                type: "integer"
+                default: 200
+              data:
+                type: "object"
+                $ref: "#/definitions/wireframeAndSearchField"
+              success:
+                type: "boolean"
+                default: true
+        404:
+          description: Not Found
+        500:
+          description: Internal Server Error

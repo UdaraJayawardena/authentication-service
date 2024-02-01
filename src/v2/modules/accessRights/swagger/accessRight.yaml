@@ -1,0 +1,12 @@
+definitions:
+  accessRight:
+    type: object
+    properties:
+      _id:
+        type: "string"
+      id:
+        type: "string"
+      name:
+        type: "string"
+      description:
+        type: "string"

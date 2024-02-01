@@ -1,0 +1,38 @@
+definitions:
+  wireframeAndSearchField:
+    type: object
+    properties:
+      id:
+        type: "string"
+      displayName:
+        type: "string"
+      searchFieldId:
+        type: "string"
+      searchFieldName:
+        type: "string"
+      # searchOperatorId:
+      #   type: "string"
+      # searchOperatorName:
+      #   type: "string"
+      frontEndPortalId:
+        type: "string"
+      frontEndPortalName:
+        type: "string"
+      clusterId:
+        type: "string"
+      clusterName:
+        type: "string"
+      backendServiceId:
+        type: "string"
+      backendServiceName:
+        type: "string"
+      serviceModuleId:
+        type: "string"
+      serviceModuleName:
+        type: "string"
+      wireframeId:
+        type: "string"
+      wireframeName:
+        type: "string"
+      active:
+        type: "boolean"

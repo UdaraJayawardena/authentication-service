@@ -1,0 +1,55 @@
+deployment:
+  env:
+    INVENTORY_SERVICE: inventory:80
+    JAEGER_HOST: jaeger-agent.istio-system.svc.cluster.local
+    JAEGER_PORT: 6832
+ingress:
+  enabled: true
+port: 4021
+secrets:
+  env:
+    enabled: true
+    name: foundation-authentication-env
+  config:
+    enabled: true
+    name: foundation-authentication-config
+    mountpath: /usr/src/app/config/env/development.json
+    subpath: development.json
+
+legacy-infrastructure:
+  databases:
+    foundation_authorization:
+      engine: mysql
+      description: Store in login, permission, frontend configuration, authentication data || Tables- access_rights | anonymous_users | backend_services | clusters | counters | dashboards | dashboard_items | front_end_portals | functionalities | functionality_wireframes | my_dashboards | my_dashboard_items | permission_matrixes | roles | search_fields | search_operators | service_modules | service_module_fields | users | wireframes | wireframe_and_search_fields
+
+  externalInteractions:
+    http:
+      - service: jump-cloud
+        endpoints:
+          - uri: /api/systemusers
+            method: GET
+            description: Get users
+          - uri: /api/systemusers/*
+            method: PUT
+            description: Update a user
+          - uri: /api/systemusers
+            method: POST
+            description: Create a user
+          - uri: /api/systemusers
+            method: DELETE
+            description: Delete jumpcloud user
+          - uri: /api/v2/ldapservers
+            method: GET
+            description: Get ldap servers
+          - uri: /api/v2/ldapservers/*/associations
+            method: POST
+            description: Create ldap associations
+          - uri: /api/v2/usergroups/*/members
+            method: POST
+            description: Manager users in user groups
+          - uri: /api/v2/usergroups
+            method: GET
+            description: Get user groups
+          - uri: /api/v2/users/*/memberof
+            method: GET
+            description: Get user groups by user

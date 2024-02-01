@@ -1,0 +1,201 @@
+paths:
+  /wireframe/:
+    get:
+      tags:
+        - Wireframe
+      summary: "Retrieve wireframe data"
+      produces:
+        - application/json
+      parameters:
+        - in: query
+          name: id
+          schema:
+            type: String
+          required: false
+        - in: query
+          name: name
+          schema:
+            type: String
+          required: false   
+      responses:
+        200:
+          description: success
+          schema:
+            type: "object"
+            properties:
+              code:
+                type: "integer"
+                default: 200
+              data:
+                type: "array"
+                items:
+                  type: "object"
+                  $ref: "#/definitions/wireframe"
+              success:
+                type: "boolean"
+                default: true
+        404:
+          description: Not Found
+        500:
+          description: Internal Server Error
+  /wireframe/add-single-recode:
+    post:
+      tags:
+        - Wireframe
+      summary: "add single wireframe data"
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: inputs for wireframe data
+          required: true
+          schema:
+            type: object
+            properties:
+              name:
+                type: string
+              key:
+                type: string              
+            example:
+              name: 'CRM customer list' 
+              key: 'CRM_customer_list'        
+      responses:
+        200:
+          description: success
+          schema:
+            type: "object"
+            properties:
+              code:
+                type: "integer"
+                default: 200
+              data:
+                type: "object"
+                $ref: "#/definitions/wireframe"
+              success:
+                type: "boolean"
+                default: true
+        404:
+          description: Not Found
+        500:
+          description: Internal Server Error
+  /wireframe/add-multiple-recodes:
+    post:
+      tags:
+        - Wireframe
+      summary: "add multiple wireframe data"
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: inputs for wireframe data
+          required: true
+          schema:
+            type: object
+            properties:
+              dashboardList:
+                type: array
+                items:
+                  type: "object"
+                  properties:
+                    name:
+                      type: string
+                    key:
+                      type: string 
+                  example:
+                    name: 'Test wireframe' 
+                    key: 'Test_wireframe'                                  
+      responses:
+        200:
+          description: success
+          schema:
+            type: "object"
+            properties:
+              code:
+                type: "integer"
+                default: 200
+              data:
+                type: "array"
+                items:
+                  type: "object"
+                  $ref: "#/definitions/wireframe"
+              success:
+                type: "boolean"
+                default: true
+        404:
+          description: Not Found
+        500:
+          description: Internal Server Error
+  /wireframe/update-recode:
+    put:
+      tags:
+        - Wireframe
+      summary: update wireframe"
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: update for wireframe data
+          required: true
+          schema:
+            type: object
+            properties:
+              query:
+                type: "object"
+              updates:
+                type: "object"                                    
+      responses:
+        200:
+          description: success
+          schema:
+            type: "object"
+            properties:
+              code:
+                type: "integer"
+                default: 200
+              data:
+                type: "object"
+                $ref: "#/definitions/wireframe"
+              success:
+                type: "boolean"
+                default: true
+        404:
+          description: Not Found
+        500:
+          description: Internal Server Error
+  /wireframe/get-portal-related-wireframes:
+    get:
+      tags:
+        - Wireframe
+      summary: "Retrieve wireframe data according to fornt-end portal"
+      produces:
+        - application/json
+      parameters:
+        - in: query
+          name: portalId
+          schema:
+            type: String
+          required: false 
+      responses:
+        200:
+          description: success
+          schema:
+            type: "object"
+            properties:
+              code:
+                type: "integer"
+                default: 200
+              data:
+                type: "array"
+                items:
+                  type: "object"
+                  $ref: "#/definitions/wireframe"
+              success:
+                type: "boolean"
+                default: true
+        404:
+          description: Not Found
+        500:
+          description: Internal Server Error

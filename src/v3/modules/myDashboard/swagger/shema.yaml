@@ -1,0 +1,12 @@
+definitions:
+  myDashboard:
+    type: object
+    properties:
+      id:
+        type: "string"
+      roleId:
+        type: "string"
+      userId:
+        type: "string"
+      dashboardId:
+        type: "boolean"

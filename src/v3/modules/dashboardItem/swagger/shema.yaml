@@ -1,0 +1,18 @@
+definitions:
+  dashboardItem:
+    type: object
+    properties:
+      id:
+        type: "string"
+      name:
+        type: "string"
+      dashboardId:
+        type: "string"
+      sequenceNumber:
+        type: "string"
+      wireframeId:
+        type: "string"
+      primaryScreenIndicator:
+        type: "boolean"
+      active:
+        type: "boolean"

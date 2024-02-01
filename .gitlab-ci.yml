@@ -1,0 +1,16 @@
+include:
+  - project: "b5087/devops/ci-templates"
+    file: "/v2-alpha/trunk.yml"
+
+variables:
+  SERVICE: "authentication"
+  SERVICE_TYPE: "api"
+  NAMESPACE: foundation
+  DEV_HOSTNAME: authentication.bridgefund-foundation-development.net
+  ACCEPTANCE_HOSTNAME: authentication.bridgefund-foundation-acceptance.net
+  APPROVAL_HOSTNAME: authentication.bridgefund-foundation-approval.net
+  PRODUCTION_HOSTNAME: authentication.bridgefund-foundation.net
+  SERVICE_PATH: "/"
+  NPM_AUDIT: "false"
+  SKIP_SNYK_SCAN : "true"
+# added container scanning

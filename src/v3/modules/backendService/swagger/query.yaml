@@ -1,0 +1,191 @@
+paths:
+  /back-end-service/:
+    get:
+      tags:
+        - Backend Service
+      summary: "Retrieve backend service data"
+      produces:
+        - application/json
+      parameters:
+        - in: query
+          name: id
+          schema:
+            type: String
+          required: false
+        - in: query
+          name: name
+          schema:
+            type: String
+          required: false
+        - in: query
+          name: clusterId
+          schema:
+            type: String
+          required: false
+        - in: query
+          name: clusterName
+          schema:
+            type: String
+          required: false 
+        - in: query
+          name: frontEndPortalId
+          schema:
+            type: String
+          required: false 
+        - in: query
+          name: frontEndPortalName
+          schema:
+            type: String
+          required: false  
+      responses:
+        200:
+          description: success
+          schema:
+            type: "object"
+            properties:
+              code:
+                type: "integer"
+                default: 200
+              data:
+                type: "array"
+                items:
+                  type: "object"
+                  $ref: "#/definitions/backendService"
+              success:
+                type: "boolean"
+                default: true
+        404:
+          description: Not Found
+        500:
+          description: Internal Server Error
+  /back-end-service/add-single-recode:
+    post:
+      tags:
+        - Backend Service
+      summary: "add single backend Service data"
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: inputs for backend service data
+          required: true
+          schema:
+            type: object
+            properties:
+              name:
+                type: string
+              description:
+                type: string
+              # frontEndPortalId:
+              #   type: string
+              clusterId:
+                type: string                     
+      responses:
+        200:
+          description: success
+          schema:
+            type: "object"
+            properties:
+              code:
+                type: "integer"
+                default: 200
+              data:
+                type: "object"
+                $ref: "#/definitions/backendService"
+              success:
+                type: "boolean"
+                default: true
+        404:
+          description: Not Found
+        500:
+          description: Internal Server Error
+  /back-end-service/add-multiple-recodes:
+    post:
+      tags:
+        - Backend Service
+      summary: "add multiple backend Service data"
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: inputs for backend service data
+          required: true
+          schema:
+            type: object
+            properties:
+              clusterList:
+                type: array
+                items:
+                  type: "object"
+                  properties:
+                    name:
+                      type: string
+                    description:
+                      type: string
+                    # frontEndPortalId:
+                    #   type: string
+                    clusterId:
+                      type: string 
+                  example:
+                    name: 'Test'                                 
+      responses:
+        200:
+          description: success
+          schema:
+            type: "object"
+            properties:
+              code:
+                type: "integer"
+                default: 200
+              data:
+                type: "array"
+                items:
+                  type: "object"
+                  $ref: "#/definitions/backendService"
+              success:
+                type: "boolean"
+                default: true
+        404:
+          description: Not Found
+        500:
+          description: Internal Server Error
+  /back-end-service/update-recode:
+    put:
+      tags:
+        - Backend Service
+      summary: update backend service"
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: update for backend service data
+          required: true
+          schema:
+            type: object
+            properties:
+              query:
+                type: "object"
+              updates:
+                type: "object"                                    
+      responses:
+        200:
+          description: success
+          schema:
+            type: "object"
+            properties:
+              code:
+                type: "integer"
+                default: 200
+              data:
+                type: "object"
+                $ref: "#/definitions/backendService"
+              success:
+                type: "boolean"
+                default: true
+        404:
+          description: Not Found
+        500:
+          description: Internal Server Error

@@ -1,0 +1,18 @@
+definitions:
+  serviceModuleField:
+    type: object
+    properties:
+      id:
+        type: "string"
+      name:
+        type: "string"
+      displayName:
+        type: "string"
+      serviceModuleId:
+        type: "string"
+      serviceModuleName:
+        type: "string"
+      backendServiceId:
+        type: "string"
+      backendServiceName:
+        type: "string"

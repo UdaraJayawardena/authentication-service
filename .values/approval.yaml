@@ -1,0 +1,6 @@
+deployment:
+  image:
+    repository: 002665144501.dkr.ecr.eu-central-1.amazonaws.com/bf-api-foundation-authentication
+  env:
+    ENVIRONMENT: acceptance
+hostName: authentication.bridgefund-foundation-approval.net

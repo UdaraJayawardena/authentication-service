@@ -1,0 +1,161 @@
+paths:
+  /functionality/:
+    get:
+      tags:
+        - Functionality
+      summary: "Retrieve Functionality data"
+      produces:
+        - application/json
+      parameters:
+        - in: query
+          name: id
+          schema:
+            type: String
+          required: false
+        - in: query
+          name: name
+          schema:
+            type: String
+          required: false   
+      responses:
+        200:
+          description: success
+          schema:
+            type: "object"
+            properties:
+              code:
+                type: "integer"
+                default: 200
+              data:
+                type: "array"
+                items:
+                  type: "object"
+                  $ref: "#/definitions/functionality"
+              success:
+                type: "boolean"
+                default: true
+        404:
+          description: Not Found
+        500:
+          description: Internal Server Error
+  /functionality/add-single-recode:
+    post:
+      tags:
+        - Functionality
+      summary: "add single Functionality data"
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: inputs for Functionality data
+          required: true
+          schema:
+            type: object
+            properties:
+              name:
+                type: string            
+            example:
+              name: 'test functionality'         
+      responses:
+        200:
+          description: success
+          schema:
+            type: "object"
+            properties:
+              code:
+                type: "integer"
+                default: 200
+              data:
+                type: "object"
+                $ref: "#/definitions/functionality"
+              success:
+                type: "boolean"
+                default: true
+        404:
+          description: Not Found
+        500:
+          description: Internal Server Error
+  /functionality/add-multiple-recodes:
+    post:
+      tags:
+        - Functionality
+      summary: "add multiple Functionality data"
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: inputs for Functionality data
+          required: true
+          schema:
+            type: object
+            properties:
+              functionalityList:
+                type: array
+                items:
+                  type: "object"
+                  properties:
+                    name:
+                      type: string
+                  example:
+                    name: 'Test'                                 
+      responses:
+        200:
+          description: success
+          schema:
+            type: "object"
+            properties:
+              code:
+                type: "integer"
+                default: 200
+              data:
+                type: "array"
+                items:
+                  type: "object"
+                  $ref: "#/definitions/functionality"
+              success:
+                type: "boolean"
+                default: true
+        404:
+          description: Not Found
+        500:
+          description: Internal Server Error
+  /functionality/update-recode:
+    put:
+      tags:
+        - Functionality
+      summary: update Functionality"
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: update for Functionality data
+          required: true
+          schema:
+            type: object
+            properties:
+              query:
+                type: "object"
+              updates:
+                type: "object"                                    
+      responses:
+        200:
+          description: success
+          schema:
+            type: "object"
+            properties:
+              code:
+                type: "integer"
+                default: 200
+              data:
+                type: "object"
+                $ref: "#/definitions/functionality"
+              success:
+                type: "boolean"
+                default: true
+        404:
+          description: Not Found
+        500:
+          description: Internal Server Error

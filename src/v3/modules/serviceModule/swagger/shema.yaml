@@ -1,0 +1,12 @@
+definitions:
+  serviceModule:
+    type: object
+    properties:
+      id:
+        type: "string"
+      name:
+        type: "string"
+      backendServiceId:
+        type: "string"
+      backendServiceName:
+        type: "string"

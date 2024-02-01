@@ -1,0 +1,57 @@
+# This file is maintained by an automation script and should not be modified manually
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: authentication
+  namespace: foundation
+  title: Authentication Service
+  description: This service handles user authentication and authorization within the
+    BrideFund IT ecosystem.
+  tags:
+  - node-18
+spec:
+  type: service
+  lifecycle: production
+  owner: default/foundation-team
+  system: foundation
+  providesApis:
+  - API:foundation/authentication-api
+  consumesApis:
+  - API:external/jump-cloud-api
+  dependsOn:
+  - Resource:foundation/foundation_authorization
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: authentication-api
+  namespace: foundation
+  title: Authentication Service API
+spec:
+  type: openapi
+  lifecycle: production
+  owner: default/foundation-team
+  system: foundation
+  definition:
+    $text: ./openapi.json
+---
+apiVersion: backstage.io/v1alpha1
+kind: Resource
+metadata:
+  name: foundation_authorization
+  namespace: foundation
+  description: Store in login, permission, frontend configuration, authentication
+    data || Tables- access_rights | anonymous_users | backend_services | clusters
+    | counters | dashboards | dashboard_items | front_end_portals | functionalities
+    | functionality_wireframes | my_dashboards | my_dashboard_items | permission_matrixes
+    | roles | search_fields | search_operators | service_modules | service_module_fields
+    | users | wireframes | wireframe_and_search_fields
+  tags:
+  - legacy
+  - mysql
+spec:
+  type: database
+  lifecycle: production
+  owner: default/foundation-team
+  system: foundation

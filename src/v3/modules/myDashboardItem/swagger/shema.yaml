@@ -1,0 +1,14 @@
+definitions:
+  myDashboardItem:
+    type: object
+    properties:
+      id:
+        type: "string"
+      myDashboardId:
+        type: "string"
+      dashboardItemId:
+        type: "string"
+      sequenceNumber:
+        type: "string"
+      active:
+        type: "boolean"

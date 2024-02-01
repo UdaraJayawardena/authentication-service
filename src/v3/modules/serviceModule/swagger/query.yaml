@@ -1,0 +1,177 @@
+paths:
+  /service-module/:
+    get:
+      tags:
+        - Backend Service Module
+      summary: "Retrieve service module data"
+      produces:
+        - application/json
+      parameters:
+        - in: query
+          name: id
+          schema:
+            type: String
+          required: false
+        - in: query
+          name: name
+          schema:
+            type: String
+          required: false
+        - in: query
+          name: backendServiceId
+          schema:
+            type: String
+          required: false
+        - in: query
+          name: backendServiceName
+          schema:
+            type: String
+          required: false    
+      responses:
+        200:
+          description: success
+          schema:
+            type: "object"
+            properties:
+              code:
+                type: "integer"
+                default: 200
+              data:
+                type: "array"
+                items:
+                  type: "object"
+                  $ref: "#/definitions/serviceModule"
+              success:
+                type: "boolean"
+                default: true
+        404:
+          description: Not Found
+        500:
+          description: Internal Server Error
+  /service-module/add-single-recode:
+    post:
+      tags:
+        - Backend Service Module
+      summary: "add single service module data"
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: inputs for service module data
+          required: true
+          schema:
+            type: object
+            properties:
+              name:
+                type: string
+              backendServiceId:
+                type: string             
+            example:
+              name: 'Test module' 
+              backendServiceId: ''        
+      responses:
+        200:
+          description: success
+          schema:
+            type: "object"
+            properties:
+              code:
+                type: "integer"
+                default: 200
+              data:
+                type: "object"
+                $ref: "#/definitions/serviceModule"
+              success:
+                type: "boolean"
+                default: true
+        404:
+          description: Not Found
+        500:
+          description: Internal Server Error
+  /service-module/add-multiple-recodes:
+    post:
+      tags:
+        - Backend Service Module
+      summary: "add multiple service module data"
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: inputs for service module data
+          required: true
+          schema:
+            type: object
+            properties:
+              serviceModuleList:
+                type: array
+                items:
+                  type: "object"
+                  properties:
+                    name:
+                      type: string
+                    backendServiceId:
+                      type: string 
+                  example:
+                    name: 'Test'  
+                    backendServiceId: ''                               
+      responses:
+        200:
+          description: success
+          schema:
+            type: "object"
+            properties:
+              code:
+                type: "integer"
+                default: 200
+              data:
+                type: "array"
+                items:
+                  type: "object"
+                  $ref: "#/definitions/serviceModule"
+              success:
+                type: "boolean"
+                default: true
+        404:
+          description: Not Found
+        500:
+          description: Internal Server Error
+  /service-module/update-recode:
+    put:
+      tags:
+        - Backend Service Module
+      summary: update service module"
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: update for service module data
+          required: true
+          schema:
+            type: object
+            properties:
+              query:
+                type: "object"
+              updates:
+                type: "object"                                    
+      responses:
+        200:
+          description: success
+          schema:
+            type: "object"
+            properties:
+              code:
+                type: "integer"
+                default: 200
+              data:
+                type: "object"
+                $ref: "#/definitions/serviceModule"
+              success:
+                type: "boolean"
+                default: true
+        404:
+          description: Not Found
+        500:
+          description: Internal Server Error

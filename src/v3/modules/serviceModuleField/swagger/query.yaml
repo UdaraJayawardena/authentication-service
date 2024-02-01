@@ -1,0 +1,193 @@
+paths:
+  /service-module-field/:
+    get:
+      tags:
+        - Service Module Field
+      summary: "Retrieve service module field data"
+      produces:
+        - application/json
+      parameters:
+        - in: query
+          name: id
+          schema:
+            type: String
+          required: false
+        - in: query
+          name: name
+          schema:
+            type: String
+          required: false
+        - in: query
+          name: serviceModuleId
+          schema:
+            type: String
+          required: false
+        - in: query
+          name: serviceModuleName
+          schema:
+            type: String
+          required: false 
+        - in: query
+          name: backendServiceId
+          schema:
+            type: String
+          required: false
+        - in: query
+          name: backendServiceName
+          schema:
+            type: String
+          required: false    
+      responses:
+        200:
+          description: success
+          schema:
+            type: "object"
+            properties:
+              code:
+                type: "integer"
+                default: 200
+              data:
+                type: "array"
+                items:
+                  type: "object"
+                  $ref: "#/definitions/serviceModuleField"
+              success:
+                type: "boolean"
+                default: true
+        404:
+          description: Not Found
+        500:
+          description: Internal Server Error
+  /service-module-field/add-single-recode:
+    post:
+      tags:
+        - Service Module Field
+      summary: "add single service module field data"
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: inputs for service module field data
+          required: true
+          schema:
+            type: object
+            properties:
+              name:
+                type: string
+              displayName: 
+                type: string
+              serviceModuleId:
+                type: string            
+            example:
+              name: 'Test module field'
+              displayName: 'test field display name' 
+              serviceModuleId: ''        
+      responses:
+        200:
+          description: success
+          schema:
+            type: "object"
+            properties:
+              code:
+                type: "integer"
+                default: 200
+              data:
+                type: "object"
+                $ref: "#/definitions/serviceModuleField"
+              success:
+                type: "boolean"
+                default: true
+        404:
+          description: Not Found
+        500:
+          description: Internal Server Error
+  /service-module-field/add-multiple-recodes:
+    post:
+      tags:
+        - Service Module Field
+      summary: "add multiple service module field data"
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: inputs for service module field data
+          required: true
+          schema:
+            type: object
+            properties:
+              serviceModuleFieldList:
+                type: array
+                items:
+                  type: "object"
+                  properties:
+                    name:
+                      type: string
+                    displayName:
+                      type: string
+                    serviceModuleId:
+                      type: string 
+                  example:
+                    name: 'Test'
+                    displayName: 'display name'  
+                    serviceModuleId: ''                               
+      responses:
+        200:
+          description: success
+          schema:
+            type: "object"
+            properties:
+              code:
+                type: "integer"
+                default: 200
+              data:
+                type: "array"
+                items:
+                  type: "object"
+                  $ref: "#/definitions/serviceModuleField"
+              success:
+                type: "boolean"
+                default: true
+        404:
+          description: Not Found
+        500:
+          description: Internal Server Error
+  /service-module-field/update-recode:
+    put:
+      tags:
+        - Service Module Field
+      summary: update service module field"
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: update for service module field data
+          required: true
+          schema:
+            type: object
+            properties:
+              query:
+                type: "object"
+              updates:
+                type: "object"                                    
+      responses:
+        200:
+          description: success
+          schema:
+            type: "object"
+            properties:
+              code:
+                type: "integer"
+                default: 200
+              data:
+                type: "object"
+                $ref: "#/definitions/serviceModuleField"
+              success:
+                type: "boolean"
+                default: true
+        404:
+          description: Not Found
+        500:
+          description: Internal Server Error

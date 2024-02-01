@@ -1,0 +1,401 @@
+paths:
+  /my-dashboard/:
+    get:
+      tags:
+        - My Dashboard
+      summary: "Retrieve my dashboard data"
+      produces:
+        - application/json
+      parameters:
+        - in: query
+          name: id
+          schema:
+            type: String
+          required: false
+        - in: query
+          name: roleId
+          schema:
+            type: String
+          required: false
+        - in: query
+          name: userId
+          schema:
+            type: String
+          required: false 
+        - in: query
+          name: dashboardId
+          schema:
+            type: String
+          required: false    
+      responses:
+        200:
+          description: success
+          schema:
+            type: "object"
+            properties:
+              code:
+                type: "integer"
+                default: 200
+              data:
+                type: "array"
+                items:
+                  type: "object"
+                  $ref: "#/definitions/myDashboard"
+              success:
+                type: "boolean"
+                default: true
+        404:
+          description: Not Found
+        500:
+          description: Internal Server Error
+  /my-dashboard/get-my-dashboards-self:
+    get:
+      tags:
+        - My Dashboard
+      summary: "Retrieve my dashboard data for logged in user"
+      produces:
+        - application/json   
+      responses:
+        200:
+          description: success
+          schema:
+            type: "object"
+            properties:
+              code:
+                type: "integer"
+                default: 200
+              data:
+                type: "array"
+                items:
+                  type: "object"
+                  $ref: "#/definitions/myDashboard"
+              success:
+                type: "boolean"
+                default: true
+        404:
+          description: Not Found
+        500:
+          description: Internal Server Error
+  /my-dashboard/add-single-recode:
+    post:
+      tags:
+        - My Dashboard
+      summary: "add single my dashboard data"
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: inputs for my dashboard data
+          required: true
+          schema:
+            type: object
+            properties:
+              roleId:
+                type: string
+              userId:
+                type: string
+              dashboardId:
+                type: string              
+            example:
+              roleId: 'roleId' 
+              userId: 'userId' 
+              dashboardId: 'dashboardId'         
+      responses:
+        200:
+          description: success
+          schema:
+            type: "object"
+            properties:
+              code:
+                type: "integer"
+                default: 200
+              data:
+                type: "object"
+                $ref: "#/definitions/myDashboard"
+              success:
+                type: "boolean"
+                default: true
+        404:
+          description: Not Found
+        500:
+          description: Internal Server Error
+  /my-dashboard/add-multiple-recodes:
+    post:
+      tags:
+        - My Dashboard
+      summary: "add multiple my dashboard data"
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: inputs for my dashboard data
+          required: true
+          schema:
+            type: object
+            properties:
+              myDashboardList:
+                type: array
+                items:
+                  type: "object"
+                  properties:
+                    roleId:
+                      type: string
+                    userId:
+                      type: string
+                    dashboardId:
+                      type: string              
+                  example:
+                    roleId: 'roleId' 
+                    userId: 'userId' 
+                    dashboardId: 'dashboardId'                             
+      responses:
+        200:
+          description: success
+          schema:
+            type: "object"
+            properties:
+              code:
+                type: "integer"
+                default: 200
+              data:
+                type: "array"
+                items:
+                  type: "object"
+                  $ref: "#/definitions/myDashboard"
+              success:
+                type: "boolean"
+                default: true
+        404:
+          description: Not Found
+        500:
+          description: Internal Server Error
+  /my-dashboard/update-recode:
+    put:
+      tags:
+        - My Dashboard
+      summary: update my dashboard"
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: update for my dashboard data
+          required: true
+          schema:
+            type: object
+            properties:
+              query:
+                type: "object"
+              updates:
+                type: "object"
+              frontEndPortalId:
+                type: "String"                                    
+      responses:
+        200:
+          description: success
+          schema:
+            type: "object"
+            properties:
+              code:
+                type: "integer"
+                default: 200
+              data:
+                type: "object"
+                $ref: "#/definitions/myDashboard"
+              success:
+                type: "boolean"
+                default: true
+        404:
+          description: Not Found
+        500:
+          description: Internal Server Error
+  /my-dashboard/add-or-delete-multiple-dashboards-for-roles-and-users-by-Admin:
+    post:
+      tags:
+        - My Dashboard
+      summary: "add or delete multiple dashboards for roles and users by admin"
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: inputs for my dashboard data add or delete
+          required: true
+          schema:
+            type: object
+            properties:
+              roleId:
+                type: "string"
+              userId:
+                type: "string"
+              frontEndPortalId:
+                type: "string"
+              dashboardIdList:
+                type: "array"
+                items:
+                  type: string
+                example: ["dashboardId1", "dashboardId2", "dashboardId3"]                             
+      responses:
+        200:
+          description: success
+          schema:
+            type: "object"
+            properties:
+              code:
+                type: "integer"
+                default: 200
+              data:
+                type: "object"
+              success:
+                type: "boolean"
+                default: true
+        404:
+          description: Not Found
+        500:
+          description: Internal Server Error
+  /my-dashboard/add-or-delete-multiple-dashboards-for-roles-and-users-by-user:
+    post:
+      tags:
+        - My Dashboard
+      summary: "add or delete multiple dashboards for roles and users by user self"
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: inputs for my dashboard data add or delete
+          required: true
+          schema:
+            type: object
+            properties:
+              frontEndPortalId:
+                type: "string"
+              dashboardIdList:
+                type: "array"
+                items:
+                  type: string
+                example: ["dashboardId1", "dashboardId2", "dashboardId3"]                             
+      responses:
+        200:
+          description: success
+          schema:
+            type: "object"
+            properties:
+              code:
+                type: "integer"
+                default: 200
+              data:
+                type: "object"
+              success:
+                type: "boolean"
+                default: true
+        404:
+          description: Not Found
+        500:
+          description: Internal Server Error
+  /my-dashboard/seed_dashboard_sequence_numbers:
+    post:
+      tags:
+        - My Dashboard
+      summary: "All my dashboards sequence number field fill if use this route. (USER SAVED SEQUENCES CHANGES IF USE THIS ROUTE. SO DO NOT USE WITHOUT GOOD REASON)"
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: inputs for my dashboard data add or delete
+          required: false                            
+      responses:
+        200:
+          description: success
+          schema:
+            type: "object"
+            properties:
+              code:
+                type: "integer"
+                default: 200
+              data:
+                type: "object"
+              success:
+                type: "boolean"
+                default: true
+        404:
+          description: Not Found
+        500:
+          description: Internal Server Error
+  /my-dashboard/add-dashboards-to-created-user:
+    post:
+      tags:
+        - My Dashboard
+      summary: "add my dashboards when user creates"
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: inputs for my dashboard data to create new user sepecific dashboard
+          required: true
+          schema:
+            type: object
+            properties:
+              userId:
+                type: "string"                             
+      responses:
+        200:
+          description: success
+          schema:
+            type: "object"
+            properties:
+              code:
+                type: "integer"
+                default: 200
+              data:
+                type: "object"
+              success:
+                type: "boolean"
+                default: true
+        404:
+          description: Not Found
+        500:
+          description: Internal Server Error
+  /my-dashboard/add-dashboards-to-user-when-role-change:
+    post:
+      tags:
+        - My Dashboard
+      summary: "remove user old role related dashboard and add new role specific dashboards. since user role has been changed"
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: inputs for my dashboard data when specific user role changes
+          required: true
+          schema:
+            type: object
+            properties:
+              userId:
+                type: "string"
+              newRoleId:
+                type: "string"
+              previousRoleId:
+                type: "string"                              
+      responses:
+        200:
+          description: success
+          schema:
+            type: "object"
+            properties:
+              code:
+                type: "integer"
+                default: 200
+              data:
+                type: "object"
+              success:
+                type: "boolean"
+                default: true
+        404:
+          description: Not Found
+        500:
+          description: Internal Server Error

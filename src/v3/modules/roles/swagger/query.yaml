@@ -1,0 +1,200 @@
+paths:
+  /role/:
+    get:
+      tags:
+        - Roles
+      summary: "Retrieve Roles data"
+      produces:
+        - application/json
+      parameters:
+        - in: query
+          name: id
+          schema:
+            type: String
+          required: false
+        - in: query
+          name: name
+          schema:
+            type: String
+          required: false   
+      responses:
+        200:
+          description: success
+          schema:
+            type: "object"
+            properties:
+              code:
+                type: "integer"
+                default: 200
+              data:
+                type: "array"
+                items:
+                  type: "object"
+                  $ref: "#/definitions/role"
+              success:
+                type: "boolean"
+                default: true
+        404:
+          description: Not Found
+        500:
+          description: Internal Server Error
+  /role/add-single-recode:
+    post:
+      tags:
+        - Roles
+      summary: "add single Role data"
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: inputs for role data
+          required: true
+          schema:
+            type: object
+            properties:
+              name:
+                type: string
+              description:
+                type: integer              
+            example:
+              name: 'CEO'
+              description: 'CEO of the company'          
+      responses:
+        200:
+          description: success
+          schema:
+            type: "object"
+            properties:
+              code:
+                type: "integer"
+                default: 200
+              data:
+                type: "object"
+                $ref: "#/definitions/role"
+              success:
+                type: "boolean"
+                default: true
+        404:
+          description: Not Found
+        500:
+          description: Internal Server Error
+  /role/add-multiple-recodes:
+    post:
+      tags:
+        - Roles
+      summary: "add multiple Roles data"
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: inputs for roles data
+          required: true
+          schema:
+            type: object
+            properties:
+              roleList:
+                type: array
+                items:
+                  type: "object"
+                  properties:
+                    name:
+                      type: string
+                    description:
+                      type: string
+                  example:
+                    name: 'Test Role'
+                    description: 'Test Role description'                                  
+      responses:
+        200:
+          description: success
+          schema:
+            type: "object"
+            properties:
+              code:
+                type: "integer"
+                default: 200
+              data:
+                type: "array"
+                items:
+                  type: "object"
+                  $ref: "#/definitions/role"
+              success:
+                type: "boolean"
+                default: true
+        404:
+          description: Not Found
+        500:
+          description: Internal Server Error
+  /role/update-recode:
+    put:
+      tags:
+        - Roles
+      summary: update role"
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: update for roles data
+          required: true
+          schema:
+            type: object
+            properties:
+              query:
+                type: "object"
+              updates:
+                type: "object"                                    
+      responses:
+        200:
+          description: success
+          schema:
+            type: "object"
+            properties:
+              code:
+                type: "integer"
+                default: 200
+              data:
+                type: "object"
+                $ref: "#/definitions/role"
+              success:
+                type: "boolean"
+                default: true
+        404:
+          description: Not Found
+        500:
+          description: Internal Server Error
+  /role/get-users-based-on-role:
+    get:
+      tags:
+        - Roles
+      summary: "Retrieve user according to role"
+      produces:
+        - application/json
+      parameters:
+        - in: query
+          name: role
+          schema:
+            type: String
+          required: true  
+      responses:
+        200:
+          description: success
+          schema:
+            type: "object"
+            properties:
+              code:
+                type: "integer"
+                default: 200
+              data:
+                type: "array"
+                items:
+                  type: "string"
+              success:
+                type: "boolean"
+                default: true
+        404:
+          description: Not Found
+        500:
+          description: Internal Server Error

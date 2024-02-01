@@ -1,0 +1,17 @@
+deployment:
+  image:
+    repository: 336144032973.dkr.ecr.eu-central-1.amazonaws.com/bf-api-foundation-authentication
+  env:
+    ENVIRONMENT: production
+hostName: authentication.bridgefund-foundation.net
+minReplicas: 2
+maxReplicas: 2
+secrets:
+  env:
+    enabled: true
+    name: foundation-authentication-env
+  config:
+    enabled: true
+    name: foundation-authentication-config
+    mountpath: /usr/src/app/config/env/production.json
+    subpath: production.json

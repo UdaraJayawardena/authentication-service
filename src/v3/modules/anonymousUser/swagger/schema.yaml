@@ -1,0 +1,22 @@
+definitions:
+  anonymousUser:
+    type: object
+    properties:
+      _id:
+        type: "string"
+      id:
+        type: "string"
+      firstName:
+        type: "string"
+      lastName:
+        type: "string"
+      permissionKey:
+        type: "string"
+      userName:
+        type: "string"
+      email:
+        type: "string"
+      organization:
+        type: "string"
+      status:
+        type: "string"

@@ -1,0 +1,248 @@
+paths:
+  /permisson-matrix/:
+    get:
+      tags:
+        - Permisson Matrix
+      summary: "Retrieve permisson matrix data"
+      produces:
+        - application/json
+      parameters:
+        - in: query
+          name: id
+          schema:
+            type: String
+          required: false
+        - in: query
+          name: _id
+          schema:
+            type: String
+          required: false
+        - in: query
+          name: role
+          schema:
+            type: String
+          required: false   
+      responses:
+        200:
+          description: success
+          schema:
+            type: "object"
+            properties:
+              code:
+                type: "integer"
+                default: 200
+              data:
+                type: "array"
+                items:
+                  type: "object"
+              success:
+                type: "boolean"
+                default: true
+        404:
+          description: Not Found
+        500:
+          description: Internal Server Error
+  /permisson-matrix/add-single-recode:
+    post:
+      tags:
+        - Permisson Matrix
+      summary: "add single permisson matrix data"
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: inputs for Permisson Matrix data
+          required: true
+          schema:
+            type: object
+            properties:
+              role:
+                type: string
+              functionality:
+                type: string
+              accessRight:
+                type: string
+              cluster:
+                type: string
+              permission:
+                type: boolean              
+            example:
+              role: 'role _id'
+              functionality: 'functionality _id'
+              accessRight: 'accessRight _id'   
+              cluster: 'cluster _id'
+              permission: true           
+      responses:
+        200:
+          description: success
+          schema:
+            type: "object"
+            properties:
+              code:
+                type: "integer"
+                default: 200
+              data:
+                type: "object"
+              success:
+                type: "boolean"
+                default: true
+        404:
+          description: Not Found
+        500:
+          description: Internal Server Error
+  /permisson-matrix/add-multiple-recodes:
+    post:
+      tags:
+        - Permisson Matrix
+      summary: "add multiple Permisson Matrix data"
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: inputs for Permisson Matrix data
+          required: true
+          schema:
+            type: object
+            properties:
+              permissionList:
+                type: array
+                items:
+                  type: "object"
+                  properties:
+                    role:
+                      type: string
+                    functionality:
+                      type: string
+                    accessRight:
+                      type: string
+                    cluster:
+                      type: string
+                    permission:
+                      type: boolean              
+                  example:
+                    role: 'role _id'
+                    functionality: 'functionality _id'
+                    accessRight: 'accessRight _id'   
+                    cluster: 'cluster _id'
+                    permission: true                              
+      responses:
+        200:
+          description: success
+          schema:
+            type: "object"
+            properties:
+              code:
+                type: "integer"
+                default: 200
+              data:
+                type: "array"
+                items:
+                  type: "object"
+              success:
+                type: "boolean"
+                default: true
+        404:
+          description: Not Found
+        500:
+          description: Internal Server Error
+  /permisson-matrix/update-recode:
+    put:
+      tags:
+        - Permisson Matrix
+      summary: update Permisson Matrix"
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: update for Permisson Matrix data
+          required: true
+          schema:
+            type: object
+            properties:
+              query:
+                type: "object"
+              updates:
+                type: "object"                                    
+      responses:
+        200:
+          description: success
+          schema:
+            type: "object"
+            properties:
+              code:
+                type: "integer"
+                default: 200
+              data:
+                type: "object"
+              success:
+                type: "boolean"
+                default: true
+        404:
+          description: Not Found
+        500:
+          description: Internal Server Error
+  /permisson-matrix/set-permissions-to-cache:
+    post:
+      tags:
+        - Permisson Matrix
+      summary: "set permissions to cache"
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: set permissions to cache          
+      responses:
+        200:
+          description: success
+          schema:
+            type: "object"
+            properties:
+              code:
+                type: "integer"
+                default: 200
+              data:
+                type: "object"
+              success:
+                type: "boolean"
+                default: true
+        404:
+          description: Not Found
+        500:
+          description: Internal Server Error
+  /permisson-matrix/get-permissions-from-cache:
+    get:
+      tags:
+        - Permisson Matrix
+      summary: "Retrieve permisson from cache"
+      produces:
+        - application/json
+      parameters:
+        - in: query
+          name: cluster
+          schema:
+            type: String
+          required: false  
+      responses:
+        200:
+          description: success
+          schema:
+            type: "object"
+            properties:
+              code:
+                type: "integer"
+                default: 200
+              data:
+                type: "array"
+                items:
+                  type: "object"
+              success:
+                type: "boolean"
+                default: true
+        404:
+          description: Not Found
+        500:
+          description: Internal Server Error

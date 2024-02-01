@@ -1,0 +1,166 @@
+paths:
+  /cluster/:
+    get:
+      tags:
+        - Cluster
+      summary: "Retrieve cluster data"
+      produces:
+        - application/json
+      parameters:
+        - in: query
+          name: id
+          schema:
+            type: String
+          required: false
+        - in: query
+          name: _id
+          schema:
+            type: String
+          required: false
+        - in: query
+          name: name
+          schema:
+            type: String
+          required: false   
+      responses:
+        200:
+          description: success
+          schema:
+            type: "object"
+            properties:
+              code:
+                type: "integer"
+                default: 200
+              data:
+                type: "array"
+                items:
+                  type: "object"
+                  $ref: "#/definitions/cluster"
+              success:
+                type: "boolean"
+                default: true
+        404:
+          description: Not Found
+        500:
+          description: Internal Server Error
+  /cluster/add-single-recode:
+    post:
+      tags:
+        - Cluster
+      summary: "add single cluster data"
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: inputs for cluster data
+          required: true
+          schema:
+            type: object
+            properties:
+              name:
+                type: string            
+            example:
+              name: 'Test Cluster'         
+      responses:
+        200:
+          description: success
+          schema:
+            type: "object"
+            properties:
+              code:
+                type: "integer"
+                default: 200
+              data:
+                type: "object"
+                $ref: "#/definitions/cluster"
+              success:
+                type: "boolean"
+                default: true
+        404:
+          description: Not Found
+        500:
+          description: Internal Server Error
+  /cluster/add-multiple-recodes:
+    post:
+      tags:
+        - Cluster
+      summary: "add multiple cluster data"
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: inputs for cluster data
+          required: true
+          schema:
+            type: object
+            properties:
+              clusterList:
+                type: array
+                items:
+                  type: "object"
+                  properties:
+                    name:
+                      type: string
+                  example:
+                    name: 'Test'                                 
+      responses:
+        200:
+          description: success
+          schema:
+            type: "object"
+            properties:
+              code:
+                type: "integer"
+                default: 200
+              data:
+                type: "array"
+                items:
+                  type: "object"
+                  $ref: "#/definitions/cluster"
+              success:
+                type: "boolean"
+                default: true
+        404:
+          description: Not Found
+        500:
+          description: Internal Server Error
+  /cluster/update-recode:
+    put:
+      tags:
+        - Cluster
+      summary: update cluster"
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: update for cluster data
+          required: true
+          schema:
+            type: object
+            properties:
+              query:
+                type: "object"
+              updates:
+                type: "object"                                    
+      responses:
+        200:
+          description: success
+          schema:
+            type: "object"
+            properties:
+              code:
+                type: "integer"
+                default: 200
+              data:
+                type: "object"
+                $ref: "#/definitions/cluster"
+              success:
+                type: "boolean"
+                default: true
+        404:
+          description: Not Found
+        500:
+          description: Internal Server Error

@@ -1,0 +1,8 @@
+const { Command } = require('commander');
+const program = new Command();
+
+program
+	.version('0.0.1')
+	.command('up [name]', 'Migrate up to a given migration', { isDefault: true })
+	.command('down [name]', 'Migrate down to a given migration')
+	.parse(process.argv);

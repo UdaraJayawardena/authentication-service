@@ -1,0 +1,196 @@
+paths:
+  /search-operator/:
+    get:
+      tags:
+        - Search Operator
+      summary: "Retrieve Search Operator data"
+      produces:
+        - application/json
+      parameters:
+        - in: query
+          name: id
+          schema:
+            type: String
+          required: false
+        - in: query
+          name: name
+          schema:
+            type: String
+          required: false   
+      responses:
+        200:
+          description: success
+          schema:
+            type: "object"
+            properties:
+              code:
+                type: "integer"
+                default: 200
+              data:
+                type: "array"
+                items:
+                  type: "object"
+                  $ref: "#/definitions/searchOperator"
+              success:
+                type: "boolean"
+                default: true
+        404:
+          description: Not Found
+        500:
+          description: Internal Server Error
+  /search-operator/add-single-recode:
+    post:
+      tags:
+        - Search Operator
+      summary: "add single Search Operator data"
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: inputs for Search Operator data
+          required: true
+          schema:
+            type: object
+            properties:
+              name:
+                type: string
+              description:
+                type: string              
+            example:
+              name: 'equals'        
+      responses:
+        200:
+          description: success
+          schema:
+            type: "object"
+            properties:
+              code:
+                type: "integer"
+                default: 200
+              data:
+                type: "object"
+                $ref: "#/definitions/searchOperator"
+              success:
+                type: "boolean"
+                default: true
+        404:
+          description: Not Found
+        500:
+          description: Internal Server Error
+  /search-operator/add-multiple-recodes:
+    post:
+      tags:
+        - Search Operator
+      summary: "add multiple Search Operator data"
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: inputs for Search Operator data
+          required: true
+          schema:
+            type: object
+            properties:
+              searchOperatorList:
+                type: array
+                items:
+                  type: "object"
+                  properties:
+                    name:
+                      type: string
+                    description:
+                      type: string
+                  example:
+                    name: 'equals'
+                    description: 'equals (=)'                                  
+      responses:
+        200:
+          description: success
+          schema:
+            type: "object"
+            properties:
+              code:
+                type: "integer"
+                default: 200
+              data:
+                type: "array"
+                items:
+                  type: "object"
+                  $ref: "#/definitions/searchOperator"
+              success:
+                type: "boolean"
+                default: true
+        404:
+          description: Not Found
+        500:
+          description: Internal Server Error
+  /search-operator/update-recode:
+    put:
+      tags:
+        - Search Operator
+      summary: update Search Operator"
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: update for Search Operator data
+          required: true
+          schema:
+            type: object
+            properties:
+              query:
+                type: "object"
+              updates:
+                type: "object"                                    
+      responses:
+        200:
+          description: success
+          schema:
+            type: "object"
+            properties:
+              code:
+                type: "integer"
+                default: 200
+              data:
+                type: "object"
+                $ref: "#/definitions/searchOperator"
+              success:
+                type: "boolean"
+                default: true
+        404:
+          description: Not Found
+        500:
+          description: Internal Server Error
+  /search-operator/seed:
+    post:
+      tags:
+        - Search Operator
+      summary: Seed operators (only run if operators not available)
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: seed operators
+          required: false                                   
+      responses:
+        200:
+          description: success
+          schema:
+            type: "object"
+            properties:
+              code:
+                type: "integer"
+                default: 200
+              data:
+                type: "object"
+              success:
+                type: "boolean"
+                default: true
+        404:
+          description: Not Found
+        500:
+          description: Internal Server Error

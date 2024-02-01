@@ -1,0 +1,24 @@
+definitions:
+  SearchField:
+    type: object
+    properties:
+      id:
+        type: "string"
+      name:
+        type: "string"
+      frontEndPortalId:
+        type: "string"
+      frontEndPortalName:
+        type: "string"
+      clusterId:
+        type: "string"
+      clusterName:
+        type: "string"
+      backendServiceId:
+        type: "string"
+      backendServiceName:
+        type: "string"
+      serviceModuleId:
+        type: "string"
+      serviceModuleName:
+        type: "string"

@@ -1,0 +1,16 @@
+definitions:
+  dashboard:
+    type: object
+    properties:
+      id:
+        type: "string"
+      name:
+        type: "string"
+      icon:
+        type: "string"
+      active:
+        type: "boolean"
+      frontEndPortalId:
+        type: "string"
+      frontEndPortalName:
+        type: "string"

@@ -1,0 +1,161 @@
+paths:
+  /access-right/:
+    get:
+      tags:
+        - Access Right
+      summary: "Retrieve Access Right data"
+      produces:
+        - application/json
+      parameters:
+        - in: query
+          name: id
+          schema:
+            type: String
+          required: false
+        - in: query
+          name: name
+          schema:
+            type: String
+          required: false   
+      responses:
+        200:
+          description: success
+          schema:
+            type: "object"
+            properties:
+              code:
+                type: "integer"
+                default: 200
+              data:
+                type: "array"
+                items:
+                  type: "object"
+                  $ref: "#/definitions/accessRight"
+              success:
+                type: "boolean"
+                default: true
+        404:
+          description: Not Found
+        500:
+          description: Internal Server Error
+  /access-right/add-single-recode:
+    post:
+      tags:
+        - Access Right
+      summary: "add single Access Right data"
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: inputs for Access Right data
+          required: true
+          schema:
+            type: object
+            properties:
+              name:
+                type: string            
+            example:
+              name: 'Disabled'         
+      responses:
+        200:
+          description: success
+          schema:
+            type: "object"
+            properties:
+              code:
+                type: "integer"
+                default: 200
+              data:
+                type: "object"
+                $ref: "#/definitions/accessRight"
+              success:
+                type: "boolean"
+                default: true
+        404:
+          description: Not Found
+        500:
+          description: Internal Server Error
+  /access-right/add-multiple-recodes:
+    post:
+      tags:
+        - Access Right
+      summary: "add multiple access right data"
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: inputs for access right data
+          required: true
+          schema:
+            type: object
+            properties:
+              accessRightsList:
+                type: array
+                items:
+                  type: "object"
+                  properties:
+                    name:
+                      type: string
+                  example:
+                    name: 'Test'                                 
+      responses:
+        200:
+          description: success
+          schema:
+            type: "object"
+            properties:
+              code:
+                type: "integer"
+                default: 200
+              data:
+                type: "array"
+                items:
+                  type: "object"
+                  $ref: "#/definitions/accessRight"
+              success:
+                type: "boolean"
+                default: true
+        404:
+          description: Not Found
+        500:
+          description: Internal Server Error
+  /access-right/update-recode:
+    put:
+      tags:
+        - Access Right
+      summary: update access right"
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: update for access right data
+          required: true
+          schema:
+            type: object
+            properties:
+              query:
+                type: "object"
+              updates:
+                type: "object"                                    
+      responses:
+        200:
+          description: success
+          schema:
+            type: "object"
+            properties:
+              code:
+                type: "integer"
+                default: 200
+              data:
+                type: "object"
+                $ref: "#/definitions/accessRight"
+              success:
+                type: "boolean"
+                default: true
+        404:
+          description: Not Found
+        500:
+          description: Internal Server Error

@@ -1,0 +1,15 @@
+definitions:
+  user:
+    type: object
+    properties:
+      _id:
+        type: "string"
+      id:
+        type: "string"
+      name:
+        type: "string"
+      camundaUserId:
+        type: "string"
+      role:
+        type: "string"
+         

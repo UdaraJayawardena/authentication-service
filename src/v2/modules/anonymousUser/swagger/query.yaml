@@ -1,0 +1,212 @@
+paths:
+  /anonymous-user/:
+    get:
+      tags:
+        - Anonymous user
+      summary: "Retrieve Anonymous user data"
+      produces:
+        - application/json
+      parameters:
+        - in: query
+          name: id
+          schema:
+            type: String
+          required: false
+        - in: query
+          name: _id
+          schema:
+            type: String
+          required: false
+        - in: query
+          name: userName
+          schema:
+            type: String
+          required: false   
+      responses:
+        200:
+          description: success
+          schema:
+            type: "object"
+            properties:
+              code:
+                type: "integer"
+                default: 200
+              data:
+                type: "array"
+                items:
+                  type: "object"
+                  $ref: "#/definitions/anonymousUser"
+              success:
+                type: "boolean"
+                default: true
+        404:
+          description: Not Found
+        500:
+          description: Internal Server Error
+  /anonymous-user/add-single-recode:
+    post:
+      tags:
+        - Anonymous user
+      summary: "add single Anonymous user data"
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: inputs for Anonymous user data
+          required: true
+          schema:
+            type: object
+            properties:
+              firstName:
+                type: string
+              lastName:
+                type: string  
+              userName:
+                type: string
+              email:
+                type: string  
+              organization:
+                type: string              
+            example:
+              firstName: 'Sam' 
+              lastName: 'David' 
+              userName: 'Sam' 
+              email: 'sam@gamil.com' 
+              organization: 'ABC Company'         
+      responses:
+        200:
+          description: success
+          schema:
+            type: "object"
+            properties:
+              code:
+                type: "integer"
+                default: 200
+              data:
+                type: "string"
+              success:
+                type: "boolean"
+                default: true
+        404:
+          description: Not Found
+        500:
+          description: Internal Server Error
+  /anonymous-user/update-recode:
+    put:
+      tags:
+        - Anonymous user
+      summary: update Anonymous user"
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: update for Anonymous user data
+          required: true
+          schema:
+            type: object
+            properties:
+              query:
+                type: "object"
+              updates:
+                type: "object"                                    
+      responses:
+        200:
+          description: success
+          schema:
+            type: "object"
+            properties:
+              code:
+                type: "integer"
+                default: 200
+              data:
+                type: "object"
+                $ref: "#/definitions/anonymousUser"
+              success:
+                type: "boolean"
+                default: true
+        404:
+          description: Not Found
+        500:
+          description: Internal Server Error
+  /anonymous-user/get-token:
+    post:
+      tags:
+        - Anonymous user
+      summary: "add single Anonymous user data"
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: inputs for Anonymous user data
+          required: true
+          schema:
+            type: object
+            properties:
+              permissionKey:
+                type: string             
+            example:
+              permissionKey: 'permission key'        
+      responses:
+        200:
+          description: success
+          schema:
+            type: "object"
+            properties:
+              code:
+                type: "integer"
+                default: 200
+              data:
+                type: "object"
+                properties:
+                  token:
+                    type: string
+              success:
+                type: "boolean"
+                default: true
+        404:
+          description: Not Found
+        500:
+          description: Internal Server Error
+  /anonymous-user/generate-new-permission-key:
+    post:
+      tags:
+        - Anonymous user
+      summary: "Generate new permission key for exsistance user"
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: inputs for Anonymous user identify data
+          required: true
+          schema:
+            type: object
+            properties:
+              permissionKey:
+                type: string             
+            example:
+              id: 'id'        
+      responses:
+        200:
+          description: success
+          schema:
+            type: "object"
+            properties:
+              code:
+                type: "integer"
+                default: 200
+              data:
+                type: "object"
+                properties:
+                  token:
+                    type: string
+              success:
+                type: "boolean"
+                default: true
+        404:
+          description: Not Found
+        500:
+          description: Internal Server Error

@@ -1,0 +1,6940 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Authorization API v3",
+    "version": "1.0.0",
+    "description": "Endpoints to test the Authoization routes"
+  },
+  "host": "authentication.bridgefund-foundation.net",
+  "basePath": "/v3",
+  "securityDefinitions": {
+    "bearerAuth": {
+      "type": "apiKey",
+      "name": "Authorization",
+      "scheme": "bearer",
+      "in": "header"
+    }
+  },
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+  "paths": {
+    "/authorization/camunda-users": {
+      "get": {
+        "tags": [
+          "Authorization"
+        ],
+        "summary": "Retrieve camunda users",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "default": 200
+                },
+                "data": {
+                  "type": "object"
+                },
+                "success": {
+                  "type": "boolean",
+                  "default": true
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/authorization/login": {
+      "post": {
+        "tags": [
+          "Authorization"
+        ],
+        "summary": "add Login data",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "inputs for login data",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "userId": {
+                  "type": "string"
+                },
+                "password": {
+                  "type": "string"
+                }
+              },
+              "example": {
+                "userId": "demo",
+                "password": "6=nGjbEY"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "default": 200
+                },
+                "data": {
+                  "type": "object"
+                },
+                "success": {
+                  "type": "boolean",
+                  "default": true
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/authorization/is-authorized": {
+      "post": {
+        "tags": [
+          "Authorization"
+        ],
+        "summary": "Authorize token",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "default": 200
+                },
+                "data": {
+                  "type": "object"
+                },
+                "success": {
+                  "type": "boolean",
+                  "default": true
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/anonymous-user/": {
+      "get": {
+        "tags": [
+          "Anonymous user"
+        ],
+        "summary": "Retrieve Anonymous user data",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "id",
+            "schema": {
+              "type": "String"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "_id",
+            "schema": {
+              "type": "String"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "userName",
+            "schema": {
+              "type": "String"
+            },
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "default": 200
+                },
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "$ref": "#/definitions/anonymousUser"
+                  }
+                },
+                "success": {
+                  "type": "boolean",
+                  "default": true
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/anonymous-user/add-single-recode": {
+      "post": {
+        "tags": [
+          "Anonymous user"
+        ],
+        "summary": "add single Anonymous user data",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "inputs for Anonymous user data",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "firstName": {
+                  "type": "string"
+                },
+                "lastName": {
+                  "type": "string"
+                },
+                "userName": {
+                  "type": "string"
+                },
+                "email": {
+                  "type": "string"
+                },
+                "organization": {
+                  "type": "string"
+                }
+              },
+              "example": {
+                "firstName": "Sam",
+                "lastName": "David",
+                "userName": "Sam",
+                "email": "sam@gamil.com",
+                "organization": "ABC Company"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "default": 200
+                },
+                "data": {
+                  "type": "string"
+                },
+                "success": {
+                  "type": "boolean",
+                  "default": true
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/anonymous-user/update-recode": {
+      "put": {
+        "tags": [
+          "Anonymous user"
+        ],
+        "summary": "update Anonymous user\"",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "update for Anonymous user data",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "query": {
+                  "type": "object"
+                },
+                "updates": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "default": 200
+                },
+                "data": {
+                  "type": "object",
+                  "$ref": "#/definitions/anonymousUser"
+                },
+                "success": {
+                  "type": "boolean",
+                  "default": true
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/anonymous-user/get-token": {
+      "post": {
+        "tags": [
+          "Anonymous user"
+        ],
+        "summary": "add single Anonymous user data",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "inputs for Anonymous user data",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "permissionKey": {
+                  "type": "string"
+                }
+              },
+              "example": {
+                "permissionKey": "permission key"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "default": 200
+                },
+                "data": {
+                  "type": "object",
+                  "properties": {
+                    "token": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "success": {
+                  "type": "boolean",
+                  "default": true
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/anonymous-user/generate-new-permission-key": {
+      "post": {
+        "tags": [
+          "Anonymous user"
+        ],
+        "summary": "Generate new permission key for exsistance user",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "inputs for Anonymous user identify data",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "permissionKey": {
+                  "type": "string"
+                }
+              },
+              "example": {
+                "id": "id"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "default": 200
+                },
+                "data": {
+                  "type": "object",
+                  "properties": {
+                    "token": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "success": {
+                  "type": "boolean",
+                  "default": true
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/access-right/": {
+      "get": {
+        "tags": [
+          "Access Right"
+        ],
+        "summary": "Retrieve Access Right data",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "id",
+            "schema": {
+              "type": "String"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "name",
+            "schema": {
+              "type": "String"
+            },
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "default": 200
+                },
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "$ref": "#/definitions/accessRight"
+                  }
+                },
+                "success": {
+                  "type": "boolean",
+                  "default": true
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/access-right/add-single-recode": {
+      "post": {
+        "tags": [
+          "Access Right"
+        ],
+        "summary": "add single Access Right data",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "inputs for Access Right data",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                }
+              },
+              "example": {
+                "name": "Disabled"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "default": 200
+                },
+                "data": {
+                  "type": "object",
+                  "$ref": "#/definitions/accessRight"
+                },
+                "success": {
+                  "type": "boolean",
+                  "default": true
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/access-right/add-multiple-recodes": {
+      "post": {
+        "tags": [
+          "Access Right"
+        ],
+        "summary": "add multiple access right data",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "inputs for access right data",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "accessRightsList": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string"
+                      }
+                    },
+                    "example": {
+                      "name": "Test"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "default": 200
+                },
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "$ref": "#/definitions/accessRight"
+                  }
+                },
+                "success": {
+                  "type": "boolean",
+                  "default": true
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/access-right/update-recode": {
+      "put": {
+        "tags": [
+          "Access Right"
+        ],
+        "summary": "update access right\"",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "update for access right data",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "query": {
+                  "type": "object"
+                },
+                "updates": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "default": 200
+                },
+                "data": {
+                  "type": "object",
+                  "$ref": "#/definitions/accessRight"
+                },
+                "success": {
+                  "type": "boolean",
+                  "default": true
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/cluster/": {
+      "get": {
+        "tags": [
+          "Cluster"
+        ],
+        "summary": "Retrieve cluster data",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "id",
+            "schema": {
+              "type": "String"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "name",
+            "schema": {
+              "type": "String"
+            },
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "default": 200
+                },
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "$ref": "#/definitions/cluster"
+                  }
+                },
+                "success": {
+                  "type": "boolean",
+                  "default": true
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/cluster/add-single-recode": {
+      "post": {
+        "tags": [
+          "Cluster"
+        ],
+        "summary": "add single cluster data",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "inputs for cluster data",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                }
+              },
+              "example": {
+                "name": "Test Cluster"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "default": 200
+                },
+                "data": {
+                  "type": "object",
+                  "$ref": "#/definitions/cluster"
+                },
+                "success": {
+                  "type": "boolean",
+                  "default": true
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/cluster/add-multiple-recodes": {
+      "post": {
+        "tags": [
+          "Cluster"
+        ],
+        "summary": "add multiple cluster data",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "inputs for cluster data",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "clusterList": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string"
+                      }
+                    },
+                    "example": {
+                      "name": "Test"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "default": 200
+                },
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "$ref": "#/definitions/cluster"
+                  }
+                },
+                "success": {
+                  "type": "boolean",
+                  "default": true
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/cluster/update-recode": {
+      "put": {
+        "tags": [
+          "Cluster"
+        ],
+        "summary": "update cluster\"",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "update for cluster data",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "query": {
+                  "type": "object"
+                },
+                "updates": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "default": 200
+                },
+                "data": {
+                  "type": "object",
+                  "$ref": "#/definitions/cluster"
+                },
+                "success": {
+                  "type": "boolean",
+                  "default": true
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/functionality/": {
+      "get": {
+        "tags": [
+          "Functionality"
+        ],
+        "summary": "Retrieve Functionality data",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "id",
+            "schema": {
+              "type": "String"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "name",
+            "schema": {
+              "type": "String"
+            },
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "default": 200
+                },
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "$ref": "#/definitions/functionality"
+                  }
+                },
+                "success": {
+                  "type": "boolean",
+                  "default": true
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/functionality/add-single-recode": {
+      "post": {
+        "tags": [
+          "Functionality"
+        ],
+        "summary": "add single Functionality data",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "inputs for Functionality data",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                }
+              },
+              "example": {
+                "name": "test functionality"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "default": 200
+                },
+                "data": {
+                  "type": "object",
+                  "$ref": "#/definitions/functionality"
+                },
+                "success": {
+                  "type": "boolean",
+                  "default": true
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/functionality/add-multiple-recodes": {
+      "post": {
+        "tags": [
+          "Functionality"
+        ],
+        "summary": "add multiple Functionality data",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "inputs for Functionality data",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "functionalityList": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string"
+                      }
+                    },
+                    "example": {
+                      "name": "Test"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "default": 200
+                },
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "$ref": "#/definitions/functionality"
+                  }
+                },
+                "success": {
+                  "type": "boolean",
+                  "default": true
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/functionality/update-recode": {
+      "put": {
+        "tags": [
+          "Functionality"
+        ],
+        "summary": "update Functionality\"",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "update for Functionality data",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "query": {
+                  "type": "object"
+                },
+                "updates": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "default": 200
+                },
+                "data": {
+                  "type": "object",
+                  "$ref": "#/definitions/functionality"
+                },
+                "success": {
+                  "type": "boolean",
+                  "default": true
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/permisson-matrix/": {
+      "get": {
+        "tags": [
+          "Permisson Matrix"
+        ],
+        "summary": "Retrieve permisson matrix data",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "id",
+            "schema": {
+              "type": "String"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "roleId",
+            "schema": {
+              "type": "String"
+            },
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "default": 200
+                },
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "type": "object"
+                  }
+                },
+                "success": {
+                  "type": "boolean",
+                  "default": true
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/permisson-matrix/add-single-recode": {
+      "post": {
+        "tags": [
+          "Permisson Matrix"
+        ],
+        "summary": "add single permisson matrix data",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "inputs for Permisson Matrix data",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "roleId": {
+                  "type": "string"
+                },
+                "functionalityId": {
+                  "type": "string"
+                },
+                "accessRightId": {
+                  "type": "string"
+                },
+                "clusterId": {
+                  "type": "string"
+                },
+                "permission": {
+                  "type": "boolean"
+                }
+              },
+              "example": {
+                "roleId": "role id",
+                "functionalityId": "functionality id",
+                "accessRightId": "accessRight id",
+                "clusterId": "cluster id",
+                "permission": true
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "default": 200
+                },
+                "data": {
+                  "type": "object"
+                },
+                "success": {
+                  "type": "boolean",
+                  "default": true
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/permisson-matrix/add-multiple-recodes": {
+      "post": {
+        "tags": [
+          "Permisson Matrix"
+        ],
+        "summary": "add multiple Permisson Matrix data",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "inputs for Permisson Matrix data",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "permissionList": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "roleId": {
+                        "type": "string"
+                      },
+                      "functionalityId": {
+                        "type": "string"
+                      },
+                      "accessRightId": {
+                        "type": "string"
+                      },
+                      "clusterId": {
+                        "type": "string"
+                      },
+                      "permission": {
+                        "type": "boolean"
+                      }
+                    },
+                    "example": {
+                      "roleId": "role id",
+                      "functionalityId": "functionality id",
+                      "accessRightId": "accessRight id",
+                      "clusterId": "cluster id",
+                      "permission": true
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "default": 200
+                },
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "type": "object"
+                  }
+                },
+                "success": {
+                  "type": "boolean",
+                  "default": true
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/permisson-matrix/update-recode": {
+      "put": {
+        "tags": [
+          "Permisson Matrix"
+        ],
+        "summary": "update Permisson Matrix\"",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "update for Permisson Matrix data",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "query": {
+                  "type": "object"
+                },
+                "updates": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "default": 200
+                },
+                "data": {
+                  "type": "object"
+                },
+                "success": {
+                  "type": "boolean",
+                  "default": true
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/permisson-matrix/set-permissions-to-cache": {
+      "post": {
+        "tags": [
+          "Permisson Matrix"
+        ],
+        "summary": "set permissions to cache",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "set permissions to cache"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "default": 200
+                },
+                "data": {
+                  "type": "object"
+                },
+                "success": {
+                  "type": "boolean",
+                  "default": true
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/permisson-matrix/get-permissions-from-cache": {
+      "get": {
+        "tags": [
+          "Permisson Matrix"
+        ],
+        "summary": "Retrieve permisson from cache",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "cluster",
+            "schema": {
+              "type": "String"
+            },
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "default": 200
+                },
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "type": "object"
+                  }
+                },
+                "success": {
+                  "type": "boolean",
+                  "default": true
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/role/": {
+      "get": {
+        "tags": [
+          "Roles"
+        ],
+        "summary": "Retrieve Roles data",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "id",
+            "schema": {
+              "type": "String"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "name",
+            "schema": {
+              "type": "String"
+            },
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "default": 200
+                },
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "$ref": "#/definitions/role"
+                  }
+                },
+                "success": {
+                  "type": "boolean",
+                  "default": true
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/role/add-single-recode": {
+      "post": {
+        "tags": [
+          "Roles"
+        ],
+        "summary": "add single Role data",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "inputs for role data",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "integer"
+                }
+              },
+              "example": {
+                "name": "CEO",
+                "description": "CEO of the company"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "default": 200
+                },
+                "data": {
+                  "type": "object",
+                  "$ref": "#/definitions/role"
+                },
+                "success": {
+                  "type": "boolean",
+                  "default": true
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/role/add-multiple-recodes": {
+      "post": {
+        "tags": [
+          "Roles"
+        ],
+        "summary": "add multiple Roles data",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "inputs for roles data",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "roleList": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string"
+                      },
+                      "description": {
+                        "type": "string"
+                      }
+                    },
+                    "example": {
+                      "name": "Test Role",
+                      "description": "Test Role description"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "default": 200
+                },
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "$ref": "#/definitions/role"
+                  }
+                },
+                "success": {
+                  "type": "boolean",
+                  "default": true
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/role/update-recode": {
+      "put": {
+        "tags": [
+          "Roles"
+        ],
+        "summary": "update role\"",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "update for roles data",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "query": {
+                  "type": "object"
+                },
+                "updates": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "default": 200
+                },
+                "data": {
+                  "type": "object",
+                  "$ref": "#/definitions/role"
+                },
+                "success": {
+                  "type": "boolean",
+                  "default": true
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/role/get-users-based-on-role": {
+      "get": {
+        "tags": [
+          "Roles"
+        ],
+        "summary": "Retrieve user according to role",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "role",
+            "schema": {
+              "type": "String"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "default": 200
+                },
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "success": {
+                  "type": "boolean",
+                  "default": true
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/user/": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Retrieve user data",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "id",
+            "schema": {
+              "type": "String"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "name",
+            "schema": {
+              "type": "String"
+            },
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "default": 200
+                },
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "$ref": "#/definitions/user"
+                  }
+                },
+                "success": {
+                  "type": "boolean",
+                  "default": true
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/user/add-single-recode": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "summary": "add single user data",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "inputs for user data",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "firstName": {
+                  "type": "string"
+                },
+                "lastName": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "roleId": {
+                  "type": "string"
+                },
+                "roleName": {
+                  "type": "string"
+                },
+                "userName": {
+                  "type": "string"
+                },
+                "displayName": {
+                  "type": "string"
+                },
+                "email": {
+                  "type": "string"
+                },
+                "phone": {
+                  "type": "string"
+                },
+                "password": {
+                  "type": "string"
+                },
+                "group": {
+                  "type": "string,"
+                },
+                "preferredLanguage": {
+                  "type": "string,"
+                },
+                "profileImage": {
+                  "type": "string,"
+                }
+              },
+              "example": {
+                "firstName": "first",
+                "lastName": "last",
+                "name": "first last",
+                "roleId": "R000013",
+                "roleName": "IT developer",
+                "userName": "user name",
+                "displayName": "dispaly name",
+                "email": "email",
+                "phone": "phone",
+                "password": "n&|[[sIBO@",
+                "group": "jumpcloud group id",
+                "preferredLanguage": "EN",
+                "profileImage": "test.jpg"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "default": 200
+                },
+                "data": {
+                  "type": "object",
+                  "$ref": "#/definitions/user"
+                },
+                "success": {
+                  "type": "boolean",
+                  "default": true
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/user/add-multiple-recodes": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "summary": "add multiple user data",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "inputs for user data",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "userList": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string"
+                      },
+                      "camundaUserId": {
+                        "type": "string"
+                      },
+                      "roleId": {
+                        "type": "string"
+                      }
+                    },
+                    "example": {
+                      "name": "test user",
+                      "camundaUserId": "camunda user Id",
+                      "roleId": "role id"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "default": 200
+                },
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "$ref": "#/definitions/functionality"
+                  }
+                },
+                "success": {
+                  "type": "boolean",
+                  "default": true
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/user/update-recode": {
+      "put": {
+        "tags": [
+          "User"
+        ],
+        "summary": "update user\"",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "update for user data",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "query": {
+                  "type": "object"
+                },
+                "updates": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "default": 200
+                },
+                "data": {
+                  "type": "object",
+                  "$ref": "#/definitions/user"
+                },
+                "success": {
+                  "type": "boolean",
+                  "default": true
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/dashboard/": {
+      "get": {
+        "tags": [
+          "Dashboard"
+        ],
+        "summary": "Retrieve dashboard data",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "id",
+            "schema": {
+              "type": "String"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "name",
+            "schema": {
+              "type": "String"
+            },
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "default": 200
+                },
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "$ref": "#/definitions/dashboard"
+                  }
+                },
+                "success": {
+                  "type": "boolean",
+                  "default": true
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/dashboard/add-single-recode": {
+      "post": {
+        "tags": [
+          "Dashboard"
+        ],
+        "summary": "add single dashboard data",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "inputs for dashboard data",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "icon": {
+                  "type": "string"
+                },
+                "active": {
+                  "type": "boolean"
+                }
+              },
+              "example": {
+                "name": "Test Dashboard",
+                "icon": "Test icon",
+                "active": true
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "default": 200
+                },
+                "data": {
+                  "type": "object",
+                  "$ref": "#/definitions/dashboard"
+                },
+                "success": {
+                  "type": "boolean",
+                  "default": true
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/dashboard/add-multiple-recodes": {
+      "post": {
+        "tags": [
+          "Dashboard"
+        ],
+        "summary": "add multiple dashboard data",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "inputs for dashboard data",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "dashboardList": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string"
+                      },
+                      "icon": {
+                        "type": "string"
+                      },
+                      "active": {
+                        "type": "boolean"
+                      }
+                    },
+                    "example": {
+                      "name": "Test Dashboard",
+                      "icon": "Test icon",
+                      "active": true
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "default": 200
+                },
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "$ref": "#/definitions/dashboard"
+                  }
+                },
+                "success": {
+                  "type": "boolean",
+                  "default": true
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/dashboard/update-recode": {
+      "put": {
+        "tags": [
+          "Dashboard"
+        ],
+        "summary": "update dashboard\"",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "update for dashboard data",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "query": {
+                  "type": "object"
+                },
+                "updates": {
+                  "type": "object"
+                },
+                "frontEndPortalId": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "default": 200
+                },
+                "data": {
+                  "type": "object",
+                  "$ref": "#/definitions/dashboard"
+                },
+                "success": {
+                  "type": "boolean",
+                  "default": true
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/dashboard-item/": {
+      "get": {
+        "tags": [
+          "Dashboard Item"
+        ],
+        "summary": "Retrieve dashboard item data",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "id",
+            "schema": {
+              "type": "String"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "name",
+            "schema": {
+              "type": "String"
+            },
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "default": 200
+                },
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "$ref": "#/definitions/dashboardItem"
+                  }
+                },
+                "success": {
+                  "type": "boolean",
+                  "default": true
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/dashboard-item/add-single-recode": {
+      "post": {
+        "tags": [
+          "Dashboard Item"
+        ],
+        "summary": "add single dashboard item data",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "inputs for dashboard item data",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "dashboardId": {
+                  "type": "string"
+                },
+                "sequenceNumber": {
+                  "type": "string"
+                },
+                "wireframeId": {
+                  "type": "string"
+                },
+                "primaryScreenIndicator": {
+                  "type": "boolean"
+                },
+                "active": {
+                  "type": "boolean"
+                }
+              },
+              "example": {
+                "name": "Test Dashboard",
+                "dashboardId": "Test dashboardId",
+                "sequenceNumber": "Test sequenceNumber",
+                "wireframeId": "Test wireframeId",
+                "primaryScreenIndicator": false,
+                "active": true
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "default": 200
+                },
+                "data": {
+                  "type": "object",
+                  "$ref": "#/definitions/dashboardItem"
+                },
+                "success": {
+                  "type": "boolean",
+                  "default": true
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/dashboard-item/add-multiple-recodes": {
+      "post": {
+        "tags": [
+          "Dashboard Item"
+        ],
+        "summary": "add multiple dashboard item data",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "inputs for dashboard item data",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "clusterList": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string"
+                      },
+                      "dashboardId": {
+                        "type": "string"
+                      },
+                      "sequenceNumber": {
+                        "type": "string"
+                      },
+                      "wireframeId": {
+                        "type": "string"
+                      },
+                      "primaryScreenIndicator": {
+                        "type": "boolean"
+                      },
+                      "active": {
+                        "type": "boolean"
+                      }
+                    },
+                    "example": {
+                      "name": "Test Dashboard",
+                      "dashboardId": "Test dashboardId",
+                      "sequenceNumber": "Test sequenceNumber",
+                      "wireframeId": "Test wireframeId",
+                      "primaryScreenIndicator": false,
+                      "active": true
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "default": 200
+                },
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "$ref": "#/definitions/dashboardItem"
+                  }
+                },
+                "success": {
+                  "type": "boolean",
+                  "default": true
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/dashboard-item/update-recode": {
+      "put": {
+        "tags": [
+          "Dashboard Item"
+        ],
+        "summary": "update dashboard item\"",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "update for dashboard item data",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "query": {
+                  "type": "object"
+                },
+                "updates": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "default": 200
+                },
+                "data": {
+                  "type": "object",
+                  "$ref": "#/definitions/dashboardItem"
+                },
+                "success": {
+                  "type": "boolean",
+                  "default": true
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/my-dashboard/": {
+      "get": {
+        "tags": [
+          "My Dashboard"
+        ],
+        "summary": "Retrieve my dashboard data",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "id",
+            "schema": {
+              "type": "String"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "roleId",
+            "schema": {
+              "type": "String"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "userId",
+            "schema": {
+              "type": "String"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "dashboardId",
+            "schema": {
+              "type": "String"
+            },
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "default": 200
+                },
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "$ref": "#/definitions/myDashboard"
+                  }
+                },
+                "success": {
+                  "type": "boolean",
+                  "default": true
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/my-dashboard/get-my-dashboards-self": {
+      "get": {
+        "tags": [
+          "My Dashboard"
+        ],
+        "summary": "Retrieve my dashboard data for logged in user",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "default": 200
+                },
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "$ref": "#/definitions/myDashboard"
+                  }
+                },
+                "success": {
+                  "type": "boolean",
+                  "default": true
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/my-dashboard/add-single-recode": {
+      "post": {
+        "tags": [
+          "My Dashboard"
+        ],
+        "summary": "add single my dashboard data",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "inputs for my dashboard data",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "roleId": {
+                  "type": "string"
+                },
+                "userId": {
+                  "type": "string"
+                },
+                "dashboardId": {
+                  "type": "string"
+                }
+              },
+              "example": {
+                "roleId": "roleId",
+                "userId": "userId",
+                "dashboardId": "dashboardId"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "default": 200
+                },
+                "data": {
+                  "type": "object",
+                  "$ref": "#/definitions/myDashboard"
+                },
+                "success": {
+                  "type": "boolean",
+                  "default": true
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/my-dashboard/add-multiple-recodes": {
+      "post": {
+        "tags": [
+          "My Dashboard"
+        ],
+        "summary": "add multiple my dashboard data",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "inputs for my dashboard data",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "myDashboardList": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "roleId": {
+                        "type": "string"
+                      },
+                      "userId": {
+                        "type": "string"
+                      },
+                      "dashboardId": {
+                        "type": "string"
+                      }
+                    },
+                    "example": {
+                      "roleId": "roleId",
+                      "userId": "userId",
+                      "dashboardId": "dashboardId"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "default": 200
+                },
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "$ref": "#/definitions/myDashboard"
+                  }
+                },
+                "success": {
+                  "type": "boolean",
+                  "default": true
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/my-dashboard/update-recode": {
+      "put": {
+        "tags": [
+          "My Dashboard"
+        ],
+        "summary": "update my dashboard\"",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "update for my dashboard data",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "query": {
+                  "type": "object"
+                },
+                "updates": {
+                  "type": "object"
+                },
+                "frontEndPortalId": {
+                  "type": "String"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "default": 200
+                },
+                "data": {
+                  "type": "object",
+                  "$ref": "#/definitions/myDashboard"
+                },
+                "success": {
+                  "type": "boolean",
+                  "default": true
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/my-dashboard/add-or-delete-multiple-dashboards-for-roles-and-users-by-Admin": {
+      "post": {
+        "tags": [
+          "My Dashboard"
+        ],
+        "summary": "add or delete multiple dashboards for roles and users by admin",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "inputs for my dashboard data add or delete",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "roleId": {
+                  "type": "string"
+                },
+                "userId": {
+                  "type": "string"
+                },
+                "frontEndPortalId": {
+                  "type": "string"
+                },
+                "dashboardIdList": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "example": [
+                    "dashboardId1",
+                    "dashboardId2",
+                    "dashboardId3"
+                  ]
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "default": 200
+                },
+                "data": {
+                  "type": "object"
+                },
+                "success": {
+                  "type": "boolean",
+                  "default": true
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/my-dashboard/add-or-delete-multiple-dashboards-for-roles-and-users-by-user": {
+      "post": {
+        "tags": [
+          "My Dashboard"
+        ],
+        "summary": "add or delete multiple dashboards for roles and users by user self",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "inputs for my dashboard data add or delete",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "frontEndPortalId": {
+                  "type": "string"
+                },
+                "dashboardIdList": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "example": [
+                    "dashboardId1",
+                    "dashboardId2",
+                    "dashboardId3"
+                  ]
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "default": 200
+                },
+                "data": {
+                  "type": "object"
+                },
+                "success": {
+                  "type": "boolean",
+                  "default": true
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/my-dashboard/seed_dashboard_sequence_numbers": {
+      "post": {
+        "tags": [
+          "My Dashboard"
+        ],
+        "summary": "All my dashboards sequence number field fill if use this route. (USER SAVED SEQUENCES CHANGES IF USE THIS ROUTE. SO DO NOT USE WITHOUT GOOD REASON)",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "inputs for my dashboard data add or delete",
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "default": 200
+                },
+                "data": {
+                  "type": "object"
+                },
+                "success": {
+                  "type": "boolean",
+                  "default": true
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/my-dashboard/add-dashboards-to-created-user": {
+      "post": {
+        "tags": [
+          "My Dashboard"
+        ],
+        "summary": "add my dashboards when user creates",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "inputs for my dashboard data to create new user sepecific dashboard",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "userId": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "default": 200
+                },
+                "data": {
+                  "type": "object"
+                },
+                "success": {
+                  "type": "boolean",
+                  "default": true
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/my-dashboard/add-dashboards-to-user-when-role-change": {
+      "post": {
+        "tags": [
+          "My Dashboard"
+        ],
+        "summary": "remove user old role related dashboard and add new role specific dashboards. since user role has been changed",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "inputs for my dashboard data when specific user role changes",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "userId": {
+                  "type": "string"
+                },
+                "newRoleId": {
+                  "type": "string"
+                },
+                "previousRoleId": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "default": 200
+                },
+                "data": {
+                  "type": "object"
+                },
+                "success": {
+                  "type": "boolean",
+                  "default": true
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/my-dashboard-item/": {
+      "get": {
+        "tags": [
+          "My Dashboard Item"
+        ],
+        "summary": "Retrieve my dashboard item data for logged in user",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "id",
+            "schema": {
+              "type": "String"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "myDashboardId",
+            "schema": {
+              "type": "String"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "dashboardItemId",
+            "schema": {
+              "type": "String"
+            }
+          },
+          {
+            "in": "query",
+            "name": "myDashboardName",
+            "schema": {
+              "type": "String"
+            },
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "default": 200
+                },
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "$ref": "#/definitions/myDashboardItem"
+                  }
+                },
+                "success": {
+                  "type": "boolean",
+                  "default": true
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/my-dashboard-item/get-by-query": {
+      "get": {
+        "tags": [
+          "My Dashboard Item"
+        ],
+        "summary": "Retrieve my dashboard item data",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "id",
+            "schema": {
+              "type": "String"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "myDashboardId",
+            "schema": {
+              "type": "String"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "dashboardItemId",
+            "schema": {
+              "type": "String"
+            }
+          },
+          {
+            "in": "query",
+            "name": "myDashboardName",
+            "schema": {
+              "type": "String"
+            },
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "default": 200
+                },
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "$ref": "#/definitions/myDashboardItem"
+                  }
+                },
+                "success": {
+                  "type": "boolean",
+                  "default": true
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/my-dashboard-item/add-single-recode": {
+      "post": {
+        "tags": [
+          "My Dashboard Item"
+        ],
+        "summary": "add single my dashboard item data",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "inputs for my dashboard item data",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "myDashboardId": {
+                  "type": "string"
+                },
+                "dashboardItemId": {
+                  "type": "string"
+                },
+                "sequenceNumber": {
+                  "type": "string"
+                },
+                "active": {
+                  "type": "boolean"
+                }
+              },
+              "example": {
+                "myDashboardId": "Test my dashboardId",
+                "dashboardItemId": "Test dashboardItemId",
+                "sequenceNumber": "Test sequenceNumber",
+                "active": true
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "default": 200
+                },
+                "data": {
+                  "type": "object",
+                  "$ref": "#/definitions/myDashboardItem"
+                },
+                "success": {
+                  "type": "boolean",
+                  "default": true
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/my-dashboard-item/add-multiple-recodes": {
+      "post": {
+        "tags": [
+          "My Dashboard Item"
+        ],
+        "summary": "add multiple my dashboard item data",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "inputs for my dashboard item data",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "myDashboardItemList": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "myDashboardId": {
+                        "type": "string"
+                      },
+                      "dashboardItemId": {
+                        "type": "string"
+                      },
+                      "sequenceNumber": {
+                        "type": "string"
+                      },
+                      "active": {
+                        "type": "boolean"
+                      }
+                    },
+                    "example": {
+                      "myDashboardId": "Test my dashboardId",
+                      "dashboardItemId": "Test dashboardItemId",
+                      "sequenceNumber": "Test sequenceNumber",
+                      "active": true
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "default": 200
+                },
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "$ref": "#/definitions/myDashboardItem"
+                  }
+                },
+                "success": {
+                  "type": "boolean",
+                  "default": true
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/my-dashboard-item/update-recode": {
+      "put": {
+        "tags": [
+          "My Dashboard Item"
+        ],
+        "summary": "update dashboard item\"",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "update fo my dashboard item data",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "query": {
+                  "type": "object"
+                },
+                "updates": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "default": 200
+                },
+                "data": {
+                  "type": "object",
+                  "$ref": "#/definitions/myDashboardItem"
+                },
+                "success": {
+                  "type": "boolean",
+                  "default": true
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/wireframe/": {
+      "get": {
+        "tags": [
+          "Wireframe"
+        ],
+        "summary": "Retrieve wireframe data",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "id",
+            "schema": {
+              "type": "String"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "name",
+            "schema": {
+              "type": "String"
+            },
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "default": 200
+                },
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "$ref": "#/definitions/wireframe"
+                  }
+                },
+                "success": {
+                  "type": "boolean",
+                  "default": true
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/wireframe/add-single-recode": {
+      "post": {
+        "tags": [
+          "Wireframe"
+        ],
+        "summary": "add single wireframe data",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "inputs for wireframe data",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "key": {
+                  "type": "string"
+                }
+              },
+              "example": {
+                "name": "CRM customer list",
+                "key": "CRM_customer_list"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "default": 200
+                },
+                "data": {
+                  "type": "object",
+                  "$ref": "#/definitions/wireframe"
+                },
+                "success": {
+                  "type": "boolean",
+                  "default": true
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/wireframe/add-multiple-recodes": {
+      "post": {
+        "tags": [
+          "Wireframe"
+        ],
+        "summary": "add multiple wireframe data",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "inputs for wireframe data",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "dashboardList": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string"
+                      },
+                      "key": {
+                        "type": "string"
+                      }
+                    },
+                    "example": {
+                      "name": "Test wireframe",
+                      "key": "Test_wireframe"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "default": 200
+                },
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "$ref": "#/definitions/wireframe"
+                  }
+                },
+                "success": {
+                  "type": "boolean",
+                  "default": true
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/wireframe/update-recode": {
+      "put": {
+        "tags": [
+          "Wireframe"
+        ],
+        "summary": "update wireframe\"",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "update for wireframe data",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "query": {
+                  "type": "object"
+                },
+                "updates": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "default": 200
+                },
+                "data": {
+                  "type": "object",
+                  "$ref": "#/definitions/wireframe"
+                },
+                "success": {
+                  "type": "boolean",
+                  "default": true
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/wireframe/get-portal-related-wireframes": {
+      "get": {
+        "tags": [
+          "Wireframe"
+        ],
+        "summary": "Retrieve wireframe data according to fornt-end portal",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "portalId",
+            "schema": {
+              "type": "String"
+            },
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "default": 200
+                },
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "$ref": "#/definitions/wireframe"
+                  }
+                },
+                "success": {
+                  "type": "boolean",
+                  "default": true
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/functionality-wireframe/": {
+      "get": {
+        "tags": [
+          "Functionality Wireframe"
+        ],
+        "summary": "Retrieve functionality-wireframe data",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "id",
+            "schema": {
+              "type": "String"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "functionalityId",
+            "schema": {
+              "type": "String"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "wireframeId",
+            "schema": {
+              "type": "String"
+            },
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "default": 200
+                },
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "$ref": "#/definitions/functionality-wireframe"
+                  }
+                },
+                "success": {
+                  "type": "boolean",
+                  "default": true
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/functionality-wireframe/add-single-recode": {
+      "post": {
+        "tags": [
+          "Functionality Wireframe"
+        ],
+        "summary": "add single Functionality Wireframe data",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "inputs for wireframe data",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "functionalityId": {
+                  "type": "string"
+                },
+                "wireframeId": {
+                  "type": "string"
+                }
+              },
+              "example": {
+                "functionalityId": "functionalityId",
+                "wireframeId": "wireframeId",
+                "active": true
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "default": 200
+                },
+                "data": {
+                  "type": "object",
+                  "$ref": "#/definitions/functionality-wireframe"
+                },
+                "success": {
+                  "type": "boolean",
+                  "default": true
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/functionality-wireframe/add-multiple-recodes": {
+      "post": {
+        "tags": [
+          "Functionality Wireframe"
+        ],
+        "summary": "add multiple Functionality Wireframe data",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "inputs for wireframe data",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "dashboardList": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "functionalityId": {
+                        "type": "string"
+                      },
+                      "wireframeId": {
+                        "type": "string"
+                      }
+                    },
+                    "example": {
+                      "functionalityId": "functionalityId",
+                      "wireframeId": "wireframeId"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "default": 200
+                },
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "$ref": "#/definitions/functionality-wireframe"
+                  }
+                },
+                "success": {
+                  "type": "boolean",
+                  "default": true
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/functionality-wireframe/update-recode": {
+      "put": {
+        "tags": [
+          "Functionality Wireframe"
+        ],
+        "summary": "update Functionality Wireframe\"",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "update for Functionality Wireframe data",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "query": {
+                  "type": "object"
+                },
+                "updates": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "default": 200
+                },
+                "data": {
+                  "type": "object",
+                  "$ref": "#/definitions/functionality-wireframe"
+                },
+                "success": {
+                  "type": "boolean",
+                  "default": true
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/front-end-portal/": {
+      "get": {
+        "tags": [
+          "front-end portal"
+        ],
+        "summary": "Retrieve front-end portal data",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "id",
+            "schema": {
+              "type": "String"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "name",
+            "schema": {
+              "type": "String"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "key",
+            "schema": {
+              "type": "String"
+            },
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "default": 200
+                },
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "$ref": "#/definitions/frontEndPortal"
+                  }
+                },
+                "success": {
+                  "type": "boolean",
+                  "default": true
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/front-end-portal/add-single-recode": {
+      "post": {
+        "tags": [
+          "front-end portal"
+        ],
+        "summary": "add single front-end portal data",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "inputs for front-end portal data",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "key": {
+                  "type": "string"
+                }
+              },
+              "example": {
+                "name": "Bridgefund portal",
+                "key": "BFP"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "default": 200
+                },
+                "data": {
+                  "type": "object",
+                  "$ref": "#/definitions/frontEndPortal"
+                },
+                "success": {
+                  "type": "boolean",
+                  "default": true
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/front-end-portal/add-multiple-recodes": {
+      "post": {
+        "tags": [
+          "front-end portal"
+        ],
+        "summary": "add multiple front-end portal data",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "inputs for front-end portal data",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "frontEndPortalList": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string"
+                      },
+                      "key": {
+                        "type": "string"
+                      }
+                    },
+                    "example": {
+                      "name": "Bridgefund portal",
+                      "key": "BFP"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "default": 200
+                },
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "$ref": "#/definitions/frontEndPortal"
+                  }
+                },
+                "success": {
+                  "type": "boolean",
+                  "default": true
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/front-end-portal/update-recode": {
+      "put": {
+        "tags": [
+          "front-end portal"
+        ],
+        "summary": "update front-end portal\"",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "update for front-end portal data",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "query": {
+                  "type": "object"
+                },
+                "updates": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "default": 200
+                },
+                "data": {
+                  "type": "object",
+                  "$ref": "#/definitions/frontEndPortal"
+                },
+                "success": {
+                  "type": "boolean",
+                  "default": true
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/front-end-portal/seed": {
+      "post": {
+        "tags": [
+          "front-end portal"
+        ],
+        "summary": "Seed portals (only run if portal not available)",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "update for front-end portal data",
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "default": 200
+                },
+                "data": {
+                  "type": "object"
+                },
+                "success": {
+                  "type": "boolean",
+                  "default": true
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/back-end-service/": {
+      "get": {
+        "tags": [
+          "Backend Service"
+        ],
+        "summary": "Retrieve backend service data",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "id",
+            "schema": {
+              "type": "String"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "name",
+            "schema": {
+              "type": "String"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "clusterId",
+            "schema": {
+              "type": "String"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "clusterName",
+            "schema": {
+              "type": "String"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "frontEndPortalId",
+            "schema": {
+              "type": "String"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "frontEndPortalName",
+            "schema": {
+              "type": "String"
+            },
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "default": 200
+                },
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "$ref": "#/definitions/backendService"
+                  }
+                },
+                "success": {
+                  "type": "boolean",
+                  "default": true
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/back-end-service/add-single-recode": {
+      "post": {
+        "tags": [
+          "Backend Service"
+        ],
+        "summary": "add single backend Service data",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "inputs for backend service data",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "clusterId": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "default": 200
+                },
+                "data": {
+                  "type": "object",
+                  "$ref": "#/definitions/backendService"
+                },
+                "success": {
+                  "type": "boolean",
+                  "default": true
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/back-end-service/add-multiple-recodes": {
+      "post": {
+        "tags": [
+          "Backend Service"
+        ],
+        "summary": "add multiple backend Service data",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "inputs for backend service data",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "clusterList": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string"
+                      },
+                      "description": {
+                        "type": "string"
+                      },
+                      "clusterId": {
+                        "type": "string"
+                      }
+                    },
+                    "example": {
+                      "name": "Test"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "default": 200
+                },
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "$ref": "#/definitions/backendService"
+                  }
+                },
+                "success": {
+                  "type": "boolean",
+                  "default": true
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/back-end-service/update-recode": {
+      "put": {
+        "tags": [
+          "Backend Service"
+        ],
+        "summary": "update backend service\"",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "update for backend service data",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "query": {
+                  "type": "object"
+                },
+                "updates": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "default": 200
+                },
+                "data": {
+                  "type": "object",
+                  "$ref": "#/definitions/backendService"
+                },
+                "success": {
+                  "type": "boolean",
+                  "default": true
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/service-module/": {
+      "get": {
+        "tags": [
+          "Backend Service Module"
+        ],
+        "summary": "Retrieve service module data",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "id",
+            "schema": {
+              "type": "String"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "name",
+            "schema": {
+              "type": "String"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "backendServiceId",
+            "schema": {
+              "type": "String"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "backendServiceName",
+            "schema": {
+              "type": "String"
+            },
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "default": 200
+                },
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "$ref": "#/definitions/serviceModule"
+                  }
+                },
+                "success": {
+                  "type": "boolean",
+                  "default": true
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/service-module/add-single-recode": {
+      "post": {
+        "tags": [
+          "Backend Service Module"
+        ],
+        "summary": "add single service module data",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "inputs for service module data",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "backendServiceId": {
+                  "type": "string"
+                }
+              },
+              "example": {
+                "name": "Test module",
+                "backendServiceId": ""
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "default": 200
+                },
+                "data": {
+                  "type": "object",
+                  "$ref": "#/definitions/serviceModule"
+                },
+                "success": {
+                  "type": "boolean",
+                  "default": true
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/service-module/add-multiple-recodes": {
+      "post": {
+        "tags": [
+          "Backend Service Module"
+        ],
+        "summary": "add multiple service module data",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "inputs for service module data",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "serviceModuleList": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string"
+                      },
+                      "backendServiceId": {
+                        "type": "string"
+                      }
+                    },
+                    "example": {
+                      "name": "Test",
+                      "backendServiceId": ""
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "default": 200
+                },
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "$ref": "#/definitions/serviceModule"
+                  }
+                },
+                "success": {
+                  "type": "boolean",
+                  "default": true
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/service-module/update-recode": {
+      "put": {
+        "tags": [
+          "Backend Service Module"
+        ],
+        "summary": "update service module\"",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "update for service module data",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "query": {
+                  "type": "object"
+                },
+                "updates": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "default": 200
+                },
+                "data": {
+                  "type": "object",
+                  "$ref": "#/definitions/serviceModule"
+                },
+                "success": {
+                  "type": "boolean",
+                  "default": true
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/search-operator/": {
+      "get": {
+        "tags": [
+          "Search Operator"
+        ],
+        "summary": "Retrieve Search Operator data",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "id",
+            "schema": {
+              "type": "String"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "name",
+            "schema": {
+              "type": "String"
+            },
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "default": 200
+                },
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "$ref": "#/definitions/searchOperator"
+                  }
+                },
+                "success": {
+                  "type": "boolean",
+                  "default": true
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/search-operator/add-single-recode": {
+      "post": {
+        "tags": [
+          "Search Operator"
+        ],
+        "summary": "add single Search Operator data",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "inputs for Search Operator data",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                }
+              },
+              "example": {
+                "name": "equals"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "default": 200
+                },
+                "data": {
+                  "type": "object",
+                  "$ref": "#/definitions/searchOperator"
+                },
+                "success": {
+                  "type": "boolean",
+                  "default": true
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/search-operator/add-multiple-recodes": {
+      "post": {
+        "tags": [
+          "Search Operator"
+        ],
+        "summary": "add multiple Search Operator data",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "inputs for Search Operator data",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "searchOperatorList": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string"
+                      },
+                      "description": {
+                        "type": "string"
+                      }
+                    },
+                    "example": {
+                      "name": "equals",
+                      "description": "equals (=)"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "default": 200
+                },
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "$ref": "#/definitions/searchOperator"
+                  }
+                },
+                "success": {
+                  "type": "boolean",
+                  "default": true
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/search-operator/update-recode": {
+      "put": {
+        "tags": [
+          "Search Operator"
+        ],
+        "summary": "update Search Operator\"",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "update for Search Operator data",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "query": {
+                  "type": "object"
+                },
+                "updates": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "default": 200
+                },
+                "data": {
+                  "type": "object",
+                  "$ref": "#/definitions/searchOperator"
+                },
+                "success": {
+                  "type": "boolean",
+                  "default": true
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/search-operator/seed": {
+      "post": {
+        "tags": [
+          "Search Operator"
+        ],
+        "summary": "Seed operators (only run if operators not available)",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "seed operators",
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "default": 200
+                },
+                "data": {
+                  "type": "object"
+                },
+                "success": {
+                  "type": "boolean",
+                  "default": true
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/search-field/": {
+      "get": {
+        "tags": [
+          "Search field"
+        ],
+        "summary": "Retrieve Search field data",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "id",
+            "schema": {
+              "type": "String"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "name",
+            "schema": {
+              "type": "String"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "frontEndPortalId",
+            "schema": {
+              "type": "String"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "frontEndPortalName",
+            "schema": {
+              "type": "String"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "clusterId",
+            "schema": {
+              "type": "String"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "clusterName",
+            "schema": {
+              "type": "String"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "backendServiceId",
+            "schema": {
+              "type": "String"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "backendServiceName",
+            "schema": {
+              "type": "String"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "serviceModuleId",
+            "schema": {
+              "type": "String"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "serviceModuleName",
+            "schema": {
+              "type": "String"
+            },
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "default": 200
+                },
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "$ref": "#/definitions/SearchField"
+                  }
+                },
+                "success": {
+                  "type": "boolean",
+                  "default": true
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/search-field/add-single-recode": {
+      "post": {
+        "tags": [
+          "Search field"
+        ],
+        "summary": "add single Search field data",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "inputs for Search field data",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "serviceModuleId": {
+                  "type": "string"
+                }
+              },
+              "example": {
+                "name": "amount",
+                "serviceModuleId": "serviceModuleId"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "default": 200
+                },
+                "data": {
+                  "type": "object",
+                  "$ref": "#/definitions/SearchField"
+                },
+                "success": {
+                  "type": "boolean",
+                  "default": true
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/search-field/add-multiple-recodes": {
+      "post": {
+        "tags": [
+          "Search field"
+        ],
+        "summary": "add multiple Search field data",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "inputs for Search field data",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "searchFieldList": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string"
+                      },
+                      "serviceModuleId": {
+                        "type": "string"
+                      }
+                    },
+                    "example": {
+                      "name": "amount",
+                      "serviceModuleId": ""
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "default": 200
+                },
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "$ref": "#/definitions/SearchField"
+                  }
+                },
+                "success": {
+                  "type": "boolean",
+                  "default": true
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/search-field/update-recode": {
+      "put": {
+        "tags": [
+          "Search field"
+        ],
+        "summary": "update Search field\"",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "update for Search field data",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "query": {
+                  "type": "object"
+                },
+                "updates": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "default": 200
+                },
+                "data": {
+                  "type": "object",
+                  "$ref": "#/definitions/SearchField"
+                },
+                "success": {
+                  "type": "boolean",
+                  "default": true
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/wireframe-and-search-field/": {
+      "get": {
+        "tags": [
+          "Wireframe and search field"
+        ],
+        "summary": "Retrieve Wireframe and search field data",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "id",
+            "schema": {
+              "type": "String"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "wireframeId",
+            "schema": {
+              "type": "String"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "wireframeName",
+            "schema": {
+              "type": "String"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "active",
+            "schema": {
+              "type": "boolean"
+            },
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "default": 200
+                },
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "$ref": "#/definitions/wireframeAndSearchField"
+                  }
+                },
+                "success": {
+                  "type": "boolean",
+                  "default": true
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/wireframe-and-search-field/query-with-search-recodes-display-fields": {
+      "get": {
+        "tags": [
+          "Wireframe and search field"
+        ],
+        "summary": "Retrieve Wireframe and search field with search results display fields  data",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "id",
+            "schema": {
+              "type": "String"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "wireframeId",
+            "schema": {
+              "type": "String"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "wireframeName",
+            "schema": {
+              "type": "String"
+            },
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "default": 200
+                },
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "$ref": "#/definitions/wireframeAndSearchField"
+                  }
+                },
+                "success": {
+                  "type": "boolean",
+                  "default": true
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Wireframe and search field"
+        ],
+        "summary": "Retrieve Wireframe and search field with search results display fields  data",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "inputs for Wireframe and search field data",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "wireframeId": {
+                  "type": "array"
+                },
+                "wireframeName": {
+                  "type": "string"
+                }
+              },
+              "example": {
+                "wireframeId": [
+                  ""
+                ],
+                "wireframeName": ""
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "default": 200
+                },
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "$ref": "#/definitions/wireframeAndSearchField"
+                  }
+                },
+                "success": {
+                  "type": "boolean",
+                  "default": true
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/wireframe-and-search-field/add-single-recode": {
+      "post": {
+        "tags": [
+          "Wireframe and search field"
+        ],
+        "summary": "add single Wireframe and search field data",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "inputs for Wireframe and search field data",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "displayName": {
+                  "type": "string"
+                },
+                "wireframeId": {
+                  "type": "string"
+                },
+                "searchFieldId": {
+                  "type": "string"
+                }
+              },
+              "example": {
+                "displayName": "",
+                "wireframeId": "",
+                "searchFieldId": ""
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "default": 200
+                },
+                "data": {
+                  "type": "object",
+                  "$ref": "#/definitions/wireframeAndSearchField"
+                },
+                "success": {
+                  "type": "boolean",
+                  "default": true
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/wireframe-and-search-field/add-multiple-recodes": {
+      "post": {
+        "tags": [
+          "Wireframe and search field"
+        ],
+        "summary": "add multiple Wireframe and search field data",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "inputs for Wireframe and search field data",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "wireframeAndSearchFieldList": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "displayName": {
+                        "type": "string"
+                      },
+                      "wireframeId": {
+                        "type": "string"
+                      },
+                      "searchFieldId": {
+                        "type": "string"
+                      }
+                    },
+                    "example": {
+                      "displayName": "",
+                      "wireframeId": "",
+                      "searchFieldId": ""
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "default": 200
+                },
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "$ref": "#/definitions/wireframeAndSearchField"
+                  }
+                },
+                "success": {
+                  "type": "boolean",
+                  "default": true
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/wireframe-and-search-field/update-recode": {
+      "put": {
+        "tags": [
+          "Wireframe and search field"
+        ],
+        "summary": "update Wireframe and search field\"",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "update for Wireframe and search field data",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "query": {
+                  "type": "object"
+                },
+                "updates": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "default": 200
+                },
+                "data": {
+                  "type": "object",
+                  "$ref": "#/definitions/wireframeAndSearchField"
+                },
+                "success": {
+                  "type": "boolean",
+                  "default": true
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/service-module-field/": {
+      "get": {
+        "tags": [
+          "Service Module Field"
+        ],
+        "summary": "Retrieve service module field data",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "id",
+            "schema": {
+              "type": "String"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "name",
+            "schema": {
+              "type": "String"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "serviceModuleId",
+            "schema": {
+              "type": "String"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "serviceModuleName",
+            "schema": {
+              "type": "String"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "backendServiceId",
+            "schema": {
+              "type": "String"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "backendServiceName",
+            "schema": {
+              "type": "String"
+            },
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "default": 200
+                },
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "$ref": "#/definitions/serviceModuleField"
+                  }
+                },
+                "success": {
+                  "type": "boolean",
+                  "default": true
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/service-module-field/add-single-recode": {
+      "post": {
+        "tags": [
+          "Service Module Field"
+        ],
+        "summary": "add single service module field data",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "inputs for service module field data",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "displayName": {
+                  "type": "string"
+                },
+                "serviceModuleId": {
+                  "type": "string"
+                }
+              },
+              "example": {
+                "name": "Test module field",
+                "displayName": "test field display name",
+                "serviceModuleId": ""
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "default": 200
+                },
+                "data": {
+                  "type": "object",
+                  "$ref": "#/definitions/serviceModuleField"
+                },
+                "success": {
+                  "type": "boolean",
+                  "default": true
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/service-module-field/add-multiple-recodes": {
+      "post": {
+        "tags": [
+          "Service Module Field"
+        ],
+        "summary": "add multiple service module field data",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "inputs for service module field data",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "serviceModuleFieldList": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string"
+                      },
+                      "displayName": {
+                        "type": "string"
+                      },
+                      "serviceModuleId": {
+                        "type": "string"
+                      }
+                    },
+                    "example": {
+                      "name": "Test",
+                      "displayName": "display name",
+                      "serviceModuleId": ""
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "default": 200
+                },
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "$ref": "#/definitions/serviceModuleField"
+                  }
+                },
+                "success": {
+                  "type": "boolean",
+                  "default": true
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/service-module-field/update-recode": {
+      "put": {
+        "tags": [
+          "Service Module Field"
+        ],
+        "summary": "update service module field\"",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "update for service module field data",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "query": {
+                  "type": "object"
+                },
+                "updates": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "default": 200
+                },
+                "data": {
+                  "type": "object",
+                  "$ref": "#/definitions/serviceModuleField"
+                },
+                "success": {
+                  "type": "boolean",
+                  "default": true
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "anonymousUser": {
+      "type": "object",
+      "properties": {
+        "_id": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "permissionKey": {
+          "type": "string"
+        },
+        "userName": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "organization": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        }
+      }
+    },
+    "accessRight": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "cluster": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "functionality": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "role": {
+      "type": "object",
+      "properties": {
+        "_id": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "user": {
+      "type": "object",
+      "properties": {
+        "user": {
+          "type": "object",
+          "properties": {
+            "displayName": {
+              "type": "string"
+            },
+            "email": {
+              "type": "string"
+            },
+            "firstName": {
+              "type": "string"
+            },
+            "jumpcloudUser": {
+              "type": "string"
+            },
+            "lastName": {
+              "type": "string"
+            },
+            "name": {
+              "type": "string"
+            },
+            "phone": {
+              "type": "string"
+            },
+            "preferredLanguage": {
+              "type": "string"
+            },
+            "profileImage": {
+              "type": "string"
+            },
+            "roleId": {
+              "type": "string"
+            },
+            "roleName": {
+              "type": "string"
+            },
+            "userId": {
+              "type": "string"
+            },
+            "userName": {
+              "type": "string"
+            }
+          }
+        },
+        "LoggedUser": {
+          "type": "object",
+          "properties": {
+            "userName": {
+              "type": "string"
+            },
+            "email": {
+              "type": "string"
+            },
+            "userId": {
+              "type": "string"
+            },
+            "firstName": {
+              "type": "string"
+            },
+            "lastName": {
+              "type": "string"
+            },
+            "userType": {
+              "type": "string"
+            },
+            "permisssions": {
+              "type": "object"
+            },
+            "role": {
+              "type": "string"
+            },
+            "profileImage": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "dashboard": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "icon": {
+          "type": "string"
+        },
+        "active": {
+          "type": "boolean"
+        },
+        "frontEndPortalId": {
+          "type": "string"
+        },
+        "frontEndPortalName": {
+          "type": "string"
+        }
+      }
+    },
+    "dashboardItem": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "dashboardId": {
+          "type": "string"
+        },
+        "sequenceNumber": {
+          "type": "string"
+        },
+        "wireframeId": {
+          "type": "string"
+        },
+        "primaryScreenIndicator": {
+          "type": "boolean"
+        },
+        "active": {
+          "type": "boolean"
+        }
+      }
+    },
+    "myDashboard": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "roleId": {
+          "type": "string"
+        },
+        "userId": {
+          "type": "string"
+        },
+        "dashboardId": {
+          "type": "boolean"
+        }
+      }
+    },
+    "myDashboardItem": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "myDashboardId": {
+          "type": "string"
+        },
+        "dashboardItemId": {
+          "type": "string"
+        },
+        "sequenceNumber": {
+          "type": "string"
+        },
+        "active": {
+          "type": "boolean"
+        }
+      }
+    },
+    "wireframe": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "key": {
+          "type": "string"
+        }
+      }
+    },
+    "functionality-wireframe": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "functionalityId": {
+          "type": "string"
+        },
+        "wireframeId": {
+          "type": "string"
+        },
+        "active": {
+          "type": "boolean"
+        }
+      }
+    },
+    "frontEndPortal": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "key": {
+          "type": "string"
+        }
+      }
+    },
+    "backendService": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "frontEndPortalId": {
+          "type": "string"
+        },
+        "frontEndPortalName": {
+          "type": "string"
+        },
+        "clusterId": {
+          "type": "string"
+        },
+        "clusterName": {
+          "type": "string"
+        }
+      }
+    },
+    "serviceModule": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "backendServiceId": {
+          "type": "string"
+        },
+        "backendServiceName": {
+          "type": "string"
+        }
+      }
+    },
+    "searchOperator": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "SearchField": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "frontEndPortalId": {
+          "type": "string"
+        },
+        "frontEndPortalName": {
+          "type": "string"
+        },
+        "clusterId": {
+          "type": "string"
+        },
+        "clusterName": {
+          "type": "string"
+        },
+        "backendServiceId": {
+          "type": "string"
+        },
+        "backendServiceName": {
+          "type": "string"
+        },
+        "serviceModuleId": {
+          "type": "string"
+        },
+        "serviceModuleName": {
+          "type": "string"
+        }
+      }
+    },
+    "wireframeAndSearchField": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "displayName": {
+          "type": "string"
+        },
+        "searchFieldId": {
+          "type": "string"
+        },
+        "searchFieldName": {
+          "type": "string"
+        },
+        "frontEndPortalId": {
+          "type": "string"
+        },
+        "frontEndPortalName": {
+          "type": "string"
+        },
+        "clusterId": {
+          "type": "string"
+        },
+        "clusterName": {
+          "type": "string"
+        },
+        "backendServiceId": {
+          "type": "string"
+        },
+        "backendServiceName": {
+          "type": "string"
+        },
+        "serviceModuleId": {
+          "type": "string"
+        },
+        "serviceModuleName": {
+          "type": "string"
+        },
+        "wireframeId": {
+          "type": "string"
+        },
+        "wireframeName": {
+          "type": "string"
+        },
+        "active": {
+          "type": "boolean"
+        }
+      }
+    },
+    "serviceModuleField": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "displayName": {
+          "type": "string"
+        },
+        "serviceModuleId": {
+          "type": "string"
+        },
+        "serviceModuleName": {
+          "type": "string"
+        },
+        "backendServiceId": {
+          "type": "string"
+        },
+        "backendServiceName": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

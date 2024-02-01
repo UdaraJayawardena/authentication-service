@@ -1,0 +1,173 @@
+paths:
+  /functionality-wireframe/:
+    get:
+      tags:
+        - Functionality Wireframe
+      summary: "Retrieve functionality-wireframe data"
+      produces:
+        - application/json
+      parameters:
+        - in: query
+          name: id
+          schema:
+            type: String
+          required: false
+        - in: query
+          name: functionalityId
+          schema:
+            type: String
+          required: false 
+        - in: query
+          name: wireframeId
+          schema:
+            type: String
+          required: false    
+      responses:
+        200:
+          description: success
+          schema:
+            type: "object"
+            properties:
+              code:
+                type: "integer"
+                default: 200
+              data:
+                type: "array"
+                items:
+                  type: "object"
+                  $ref: "#/definitions/functionality-wireframe"
+              success:
+                type: "boolean"
+                default: true
+        404:
+          description: Not Found
+        500:
+          description: Internal Server Error
+  /functionality-wireframe/add-single-recode:
+    post:
+      tags:
+        - Functionality Wireframe
+      summary: "add single Functionality Wireframe data"
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: inputs for wireframe data
+          required: true
+          schema:
+            type: object
+            properties:
+              functionalityId:
+                type: string
+              wireframeId:
+                type: string              
+            example:
+              functionalityId: 'functionalityId' 
+              wireframeId: 'wireframeId' 
+              active: true         
+      responses:
+        200:
+          description: success
+          schema:
+            type: "object"
+            properties:
+              code:
+                type: "integer"
+                default: 200
+              data:
+                type: "object"
+                $ref: "#/definitions/functionality-wireframe"
+              success:
+                type: "boolean"
+                default: true
+        404:
+          description: Not Found
+        500:
+          description: Internal Server Error
+  /functionality-wireframe/add-multiple-recodes:
+    post:
+      tags:
+        - Functionality Wireframe
+      summary: "add multiple Functionality Wireframe data"
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: inputs for wireframe data
+          required: true
+          schema:
+            type: object
+            properties:
+              dashboardList:
+                type: array
+                items:
+                  type: "object"
+                  properties:
+                    functionalityId:
+                      type: string
+                    wireframeId:
+                      type: string 
+                  example:
+                    functionalityId: 'functionalityId' 
+                    wireframeId: 'wireframeId'                                  
+      responses:
+        200:
+          description: success
+          schema:
+            type: "object"
+            properties:
+              code:
+                type: "integer"
+                default: 200
+              data:
+                type: "array"
+                items:
+                  type: "object"
+                  $ref: "#/definitions/functionality-wireframe"
+              success:
+                type: "boolean"
+                default: true
+        404:
+          description: Not Found
+        500:
+          description: Internal Server Error
+  /functionality-wireframe/update-recode:
+    put:
+      tags:
+        - Functionality Wireframe
+      summary: update Functionality Wireframe"
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: update for Functionality Wireframe data
+          required: true
+          schema:
+            type: object
+            properties:
+              query:
+                type: "object"
+              updates:
+                type: "object"                                    
+      responses:
+        200:
+          description: success
+          schema:
+            type: "object"
+            properties:
+              code:
+                type: "integer"
+                default: 200
+              data:
+                type: "object"
+                $ref: "#/definitions/functionality-wireframe"
+              success:
+                type: "boolean"
+                default: true
+        404:
+          description: Not Found
+        500:
+          description: Internal Server Error

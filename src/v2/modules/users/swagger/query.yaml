@@ -1,0 +1,178 @@
+paths:
+  /user/:
+    get:
+      tags:
+        - User
+      summary: "Retrieve user data"
+      produces:
+        - application/json
+      parameters:
+        - in: query
+          name: id
+          schema:
+            type: String
+          required: false
+        - in: query
+          name: _id
+          schema:
+            type: String
+          required: false
+        - in: query
+          name: name
+          schema:
+            type: String
+          required: false   
+      responses:
+        200:
+          description: success
+          schema:
+            type: "object"
+            properties:
+              code:
+                type: "integer"
+                default: 200
+              data:
+                type: "array"
+                items:
+                  type: "object"
+                  $ref: "#/definitions/user"
+              success:
+                type: "boolean"
+                default: true
+        404:
+          description: Not Found
+        500:
+          description: Internal Server Error
+  /user/add-single-recode:
+    post:
+      tags:
+        - User
+      summary: "add single user data"
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: inputs for user data
+          required: true
+          schema:
+            type: object
+            properties:
+              name:
+                type: string
+              camundaUserId:
+                type: string
+              role:
+                type: string
+            example:
+              name: 'test user' 
+              camundaUserId: 'camunda user Id' 
+              role: 'role _id'         
+      responses:
+        200:
+          description: success
+          schema:
+            type: "object"
+            properties:
+              code:
+                type: "integer"
+                default: 200
+              data:
+                type: "object"
+                $ref: "#/definitions/user"
+              success:
+                type: "boolean"
+                default: true
+        404:
+          description: Not Found
+        500:
+          description: Internal Server Error
+  /user/add-multiple-recodes:
+    post:
+      tags:
+        - User
+      summary: "add multiple user data"
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: inputs for user data
+          required: true
+          schema:
+            type: object
+            properties:
+              userList:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    camundaUserId:
+                      type: string
+                    role:
+                      type: string
+                  example:
+                    name: 'test user' 
+                    camundaUserId: 'camunda user Id' 
+                    role: 'role _id'                              
+      responses:
+        200:
+          description: success
+          schema:
+            type: "object"
+            properties:
+              code:
+                type: "integer"
+                default: 200
+              data:
+                type: "array"
+                items:
+                  type: "object"
+                  $ref: "#/definitions/functionality"
+              success:
+                type: "boolean"
+                default: true
+        404:
+          description: Not Found
+        500:
+          description: Internal Server Error
+  /user/update-recode:
+    put:
+      tags:
+        - User
+      summary: update user"
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: update for user data
+          required: true
+          schema:
+            type: object
+            properties:
+              query:
+                type: "object"
+              updates:
+                type: "object"                                    
+      responses:
+        200:
+          description: success
+          schema:
+            type: "object"
+            properties:
+              code:
+                type: "integer"
+                default: 200
+              data:
+                type: "object"
+                $ref: "#/definitions/user"
+              success:
+                type: "boolean"
+                default: true
+        404:
+          description: Not Found
+        500:
+          description: Internal Server Error

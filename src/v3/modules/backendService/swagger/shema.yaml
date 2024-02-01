@@ -1,0 +1,18 @@
+definitions:
+  backendService:
+    type: object
+    properties:
+      id:
+        type: "string"
+      name:
+        type: "string"
+      description:
+        type: "string"
+      frontEndPortalId:
+        type: "string"
+      frontEndPortalName:
+        type: "string"
+      clusterId:
+        type: "string"
+      clusterName:
+        type: "string"
